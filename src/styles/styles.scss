@@ -34,14 +34,14 @@ body {
     // font-size: $s-1;
   }
 
-	.background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100lvh;
-		z-index: -1;
-	}
+	// .background {
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100vw;
+	// 	height: 100lvh;
+	// 	z-index: -1;
+	// }
 }
 
 ::selection {
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6,
 	display: block;
 	font-family: $heading_font;
 	// text-transform: uppercase;
-	font-weight: 600;
+	font-weight: 400;
 	letter-spacing: -0.02em;
 	line-height: 0.9;
 	white-space: pre-line;
@@ -64,10 +64,8 @@ h1, h2, h3, h4, h5, h6,
 		max-width: 30ch;
 	}
 
-	small {
-		// font-family: $body_font;
-		font-weight: normal;
-		font-size: 0.75em;
+	strong {
+		font-weight: 600;
 	}
 
 	&.h--alt {
@@ -167,8 +165,10 @@ h6,
 }
 
 p {
+	width: 100%;
 	white-space: pre-line;
-	max-width: 66ch;
+	// max-width: 66ch;
+
 
 	.mid &,
 	blockquote & {
@@ -258,10 +258,11 @@ button,
 	font-size: $s0;
 	text-transform: inherit;
 	// line-height: 1;
-	border: 1px solid;
+	border: none;
 	color: currentColor;
-	background: transparent;
-	border-radius: $radius;
+	color: $blanc;
+	background: $bleu;
+	border-radius: $s2;
 	padding: ($s-3) ($s0);
 
 	&:disabled,
@@ -536,8 +537,8 @@ table {
 	td,
 	th {
 		font-weight: normal;
-		border-bottom: 1px solid;
-		padding: ($s-3) ($s2) ($s-3) 0;
+		// border-bottom: 1px solid;
+		padding: ($s-3);
 		white-space: pre-line;
 		width: calc(100% / var(--length));
 		vertical-align: top;

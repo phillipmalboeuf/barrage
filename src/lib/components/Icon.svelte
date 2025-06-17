@@ -9,11 +9,8 @@
 <path d="M18.9531 18.2236L23.5893 22.4842" stroke="currentColor" stroke-width="1.79171" stroke-miterlimit="10" stroke-linecap="round"/>
 </svg>
 {:else if icon === 'menu'}
-<svg aria-label={label} width="32" height="32" viewBox="0 0 31 32">
-<circle cx="15.5" cy="16" r="15.5" fill="#F7F7F0"/>
-<line x1="7.75" y1="15.9999" x2="23.25" y2="15.9999" stroke="currentColor" stroke-width="1.55"/>
-<line x1="7.75" y1="21.4252" x2="23.25" y2="21.4252" stroke="currentColor" stroke-width="1.55"/>
-<line x1="7.75" y1="10.5751" x2="23.25" y2="10.5751" stroke="currentColor" stroke-width="1.55"/>
+<svg aria-label={label} width="26" height="17" viewBox="0 0 26 17">
+  <path d="M1 1H25M1 8.31707H25M1 16H25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 </svg>
 {:else if icon === 'close'}
 <svg aria-label={label} width="32" height="32" viewBox="0 0 31 31">
