@@ -15,14 +15,14 @@
 </script>
 
 <div class="flex">
-	<Header navigation={data.navigations.main} />
+	<Header navigations={data.navigations} />
 	<main class="{page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {page.url.pathname.replaceAll('/', '-')} {page.data.page?.fields.couleur}">
 		
 		{@render children()}
 
 		<!-- <Articles articles={data.articles.items} full={page.url.pathname === '/actualites'} /> -->
 	</main>
-	<Footer navigations={data.navigations} />
+	<Footer navigations={data.navigations} top />
 </div>
 
 

@@ -11,7 +11,9 @@
 
 <div class="hero">
   <figure>
+    {#if item.fields.media}
     <Media media={item.fields.media} />
+    {/if}
   </figure>
   <div class="hero__content padded">
     <Rich body={item.fields.body} />
@@ -27,10 +29,6 @@
     align-items: center;
     min-height: 100lvh;
     color: $blanc;
-
-    &:first-child {
-      margin-top: -130px;
-    }
 
     &__content {
       padding: $s1;

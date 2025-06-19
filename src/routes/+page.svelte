@@ -22,3 +22,13 @@
 </section>
 {/each}
 {/if}
+
+
+<style lang="scss">
+  section {
+
+    &.hero:first-child {
+      margin-top: -130px;
+    }
+  }
+</style>
