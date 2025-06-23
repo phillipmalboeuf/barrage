@@ -10,15 +10,16 @@
   let { data }: { data: PageData } = $props()
 
   let active = $state<Entry<TypeQuestionSkeleton | TypeFormSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">>(data.question)
-  let previous = $state<Entry<TypeQuestionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">>()
+  let history = $state<Entry<TypeQuestionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">[]>([])
   let selected = $state<string | null>(null)
   let error = $state<RichTextDocument | null>(null)
+  let isValid = $state(false)
 
   let form = $state<HTMLFormElement>()
 </script>
 
 <section class="padded">
-  <form class="question flex flex--column flex--gapped" action={isTypeForm(active) ? active.fields.action : null} method={"POST"} bind:this={form} onsubmit={e => {
+  <form class="question flex flex--column flex--gapped" action={isTypeForm(active) ? active.fields.action : null} method={"POST"} bind:this={form} oninput={() => isValid = form.checkValidity()} onsubmit={e => {
     if (selected && isTypeQuestion(active)) {
       e.preventDefault()
       const answer = active.fields.answers.find(answer => answer.fields.id === selected)
@@ -26,7 +27,8 @@
         error = answer.fields.error
       } else {
         error = null
-        previous = active
+        history.push(active)
+        isValid = false
         active = answer.fields.nextQuestion || active.fields.defaultNextQuestion
       } 
     }
@@ -72,12 +74,17 @@
     {/if}
 
     <div class="buttons">
-      {#if previous && active.sys.id !== data.question.sys.id}
+      {#if history.length > 0}
       <button type="button" onclick={() => {
-        active = previous
+        const previousQuestion = history.pop()
+        if (previousQuestion) {
+          active = previousQuestion
+        }
+        error = null
+        selected = null
       }}><span>←</span> Back</button>
       {/if}
-      <button type="submit" disabled={!selected}>{isTypeForm(active) ? 'Send' : 'Next'} <span>→</span></button>
+      <button type="submit" disabled={isTypeForm(active) ? !isValid : !selected}>{isTypeForm(active) ? 'Send' : 'Next'} <span>→</span></button>
     </div>
   </form>
 </section>
