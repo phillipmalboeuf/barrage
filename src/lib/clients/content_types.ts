@@ -1,5 +1,34 @@
 import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
 
+export interface TypeAnswerFields {
+    label: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    nextQuestion?: EntryFieldTypes.EntryLink<TypeFormSkeleton | TypeQuestionSkeleton>;
+    error?: EntryFieldTypes.RichText;
+}
+
+export type TypeAnswerSkeleton = EntrySkeletonType<TypeAnswerFields, "answer">;
+export type TypeAnswer<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeAnswerSkeleton, Modifiers, Locales>;
+
+export function isTypeAnswer<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeAnswer<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'answer'
+}
+
+export interface TypeFormFields {
+    id: EntryFieldTypes.Symbol;
+    action: EntryFieldTypes.Symbol;
+    introduction?: EntryFieldTypes.RichText;
+    inputs?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeInputSkeleton>>;
+    successMessage?: EntryFieldTypes.RichText;
+}
+
+export type TypeFormSkeleton = EntrySkeletonType<TypeFormFields, "form">;
+export type TypeForm<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeFormSkeleton, Modifiers, Locales>;
+
+export function isTypeForm<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeForm<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'form'
+}
+
 export interface TypeHeroFields {
     id?: EntryFieldTypes.Symbol;
     body?: EntryFieldTypes.RichText;
@@ -11,6 +40,19 @@ export type TypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHero<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'hero'
+}
+
+export interface TypeInputFields {
+    label: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    type: EntryFieldTypes.Symbol<"Email" | "Phone" | "Text" | "Textarea">;
+}
+
+export type TypeInputSkeleton = EntrySkeletonType<TypeInputFields, "input">;
+export type TypeInput<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeInputSkeleton, Modifiers, Locales>;
+
+export function isTypeInput<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeInput<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'input'
 }
 
 export interface TypeLinkFields {
@@ -50,6 +92,20 @@ export type TypePage<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePage<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'page'
+}
+
+export interface TypeQuestionFields {
+    body?: EntryFieldTypes.RichText;
+    id: EntryFieldTypes.Symbol;
+    answers?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeAnswerSkeleton>>;
+    defaultNextQuestion?: EntryFieldTypes.EntryLink<TypeFormSkeleton | TypeQuestionSkeleton>;
+}
+
+export type TypeQuestionSkeleton = EntrySkeletonType<TypeQuestionFields, "question">;
+export type TypeQuestion<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeQuestionSkeleton, Modifiers, Locales>;
+
+export function isTypeQuestion<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeQuestion<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'question'
 }
 
 export interface TypeTextFields {

@@ -49,7 +49,7 @@
     {/each}
   </nav>
   <nav class="menu-nav padded" class:open={menuOpen} class:scrolled={scrollY > innerHeight - (headerHeight / 2)}>
-    <button class="button--none" onclick={() => menuOpen = !menuOpen}>
+    <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen}>
       {#if menuOpen}
         <Icon icon="close" label="Close" />
       {:else}
@@ -57,7 +57,7 @@
       {/if}
     </button>
     {#if menuOpen}
-    <dialog open transition:fly={{ x: '100%', opacity: 1, duration: 666 }}>
+    <dialog open id="menu" transition:fly={{ x: '100%', opacity: 1, duration: 666 }}>
       <Footer navigations={navigations} />
     </dialog>
     {/if}

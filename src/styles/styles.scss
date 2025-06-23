@@ -364,55 +364,8 @@ button,
 	}
 }
 
-// fieldset {
-// 	appearance: none;
-// 	border: none;
-// 	width: 100%;
-
-// 	label {
-// 		pointer-events: none;
-// 		height: 0;
-// 		position: relative;
-// 		z-index: 1;
-// 		display: block;
-// 		top: $base * 0.6;
-// 		left: $base;
-// 		transition: top 333ms;
-
-// 		&:has(+ input:not(:placeholder-shown)),
-// 		&:has(+ textarea:not(:placeholder-shown)),
-// 		&:has(+ select:not(:invalid)) {
-// 			font-size: $base * 0.66;
-// 			top: 1px;
-// 		}
-// 	}
-// }
-
 label {
 	cursor: pointer;
-
-	&:has(> input[type=checkbox]),
-	&:has(> input[type=radio]) {
-		display: flex;
-		align-items: center;
-		gap: $base * 0.5;
-
-		&.button {
-			background-color: $grey;
-
-			&:hover,
-			&:focus,
-			&:has(> input[type=checkbox]:checked),
-			&:has(> input[type=radio]:checked)  {
-				color: $blanc;
-				background: $noir;
-			}
-
-			input {
-				display: none;
-			}
-		}
-	}
 }
 
 input,
@@ -420,7 +373,7 @@ select,
 textarea {
 	width: 100%;
 	color: currentColor;
-	// background-color: $blanc;
+	background-color: $blanc;
 	border: none;
 	border-bottom: 1px solid;
 	// border-radius: calc($radius / 2);
@@ -471,7 +424,9 @@ input[type=checkbox] {
 
 	color: currentColor;
 	background-color: transparent;
-	border: 1px solid;
+	outline: 2px solid;
+	outline-offset: 2px;
+	border: none;
 
 	&:checked {
 		background-color: currentColor;
@@ -480,6 +435,10 @@ input[type=checkbox] {
 	&.input--none {
 		display: none;
 	}
+}
+
+input[type=radio] {
+	border-radius: 50%;
 }
 
 svg {

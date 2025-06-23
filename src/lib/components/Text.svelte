@@ -40,7 +40,7 @@
 </script>
 
 
-<div class="text flex flex--column flex--center">
+<div class="text flex flex--column flex--center" class:media={item.fields.media}>
   <hr bind:this={hrElement}>
   {#if item.fields.title}
   <h3>{item.fields.title}</h3>
@@ -69,8 +69,10 @@
       margin-bottom: $s4;
     }
 
-    > div {
-      max-width: 555px;
+    &.media {
+      > div {
+        max-width: 555px;
+      }
     }
 
     hr {
