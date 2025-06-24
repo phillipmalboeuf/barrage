@@ -1,12 +1,9 @@
 <script lang="ts">
 	import '../styles/styles.scss'
-	
-	// import { i18n } from '$lib/i18n/i18n.js';
-	// import { ParaglideJS } from '@inlang/paraglide-sveltekit';
   
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	// import Articles from '$lib/components/Articles.svelte';
+	import ContactDialog from '$lib/components/ContactDialog.svelte'
 
 	import { page } from '$app/state'
   import { getLocale } from '$lib/paraglide/runtime';
@@ -22,6 +19,7 @@
 
 		<!-- <Articles articles={data.articles.items} full={page.url.pathname === '/actualites'} /> -->
 	</main>
+	<ContactDialog />
 	<Footer navigations={data.navigations} top />
 </div>
 

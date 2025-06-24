@@ -5,6 +5,7 @@
   import Icon from './Icon.svelte'
   import Footer from './Footer.svelte'
   import { fly } from 'svelte/transition';
+  import { onNavigate } from '$app/navigation';
 
   let { navigations }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -27,9 +28,9 @@
     lastScrollY = scrollY < 0 ? 0 : scrollY
   }
 
-  function closeMenu() {
+  onNavigate(() => {
     menuOpen = false
-  }
+  })
 </script>
 
 <svelte:window bind:scrollY bind:innerHeight onscroll={onScroll} />
