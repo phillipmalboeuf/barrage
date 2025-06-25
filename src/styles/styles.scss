@@ -140,7 +140,7 @@ h5,
 .h5 {
 	font-size: $s1;
 	// font-family: $body_font;
-	font-weight: 600;
+	// font-weight: 600;
 	line-height: 1.2;
 
 	@media (max-width: $mobile) {
@@ -299,34 +299,18 @@ button,
 		color: $blanc;
 		background: $accent;
 		border-color: transparent;
-
-		// .mauve-pale & { background: $mauve-fonce; }
-		// .rose-pale & { background: $bourgogne; }
-		// .bleu-pale & { background: $bleu-fonce; }
-		// .vert-pale & { background: $vert-fonce; }
 	}
 
 	&.button--grey {
 		color: $noir;
 		background: $grey;
 		border-color: transparent;
-
-		// .mauve-pale & { color: $mauve-fonce; }
-		// .rose-pale & { color: $bourgogne; }
-		// .bleu-pale & { color: $bleu-fonce; }
-		// .vert-pale & { color: $vert-fonce; }
 	}
 
 	&.button--muted {
 		color: currentColor;
 		background: rgba($blanc, 0.1);
 		border-color: transparent;
-
-		// .mauve-pale &,
-		// .rose-pale &, 
-		// .bleu-pale &, 
-		// .jaune &, 
-		// .vert-pale & { background: rgba($noir, 0.1); }
 
 		&:hover,
 		&:focus {

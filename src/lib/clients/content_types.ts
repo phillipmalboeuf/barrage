@@ -29,6 +29,21 @@ export function isTypeForm<Modifiers extends ChainModifiers, Locales extends Loc
     return entry.sys.contentType.sys.id === 'form'
 }
 
+export interface TypeGridFields {
+    title?: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    columns?: EntryFieldTypes.Integer;
+    alignments?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeTextSkeleton>>;
+}
+
+export type TypeGridSkeleton = EntrySkeletonType<TypeGridFields, "grid">;
+export type TypeGrid<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeGridSkeleton, Modifiers, Locales>;
+
+export function isTypeGrid<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeGrid<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'grid'
+}
+
 export interface TypeHeroFields {
     id?: EntryFieldTypes.Symbol;
     body?: EntryFieldTypes.RichText;
@@ -58,6 +73,7 @@ export function isTypeInput<Modifiers extends ChainModifiers, Locales extends Lo
 export interface TypeLinkFields {
     label: EntryFieldTypes.Symbol;
     destination?: EntryFieldTypes.Symbol;
+    asset?: EntryFieldTypes.AssetLink;
     external?: EntryFieldTypes.Boolean;
 }
 
@@ -68,7 +84,21 @@ export function isTypeLink<Modifiers extends ChainModifiers, Locales extends Loc
     return entry.sys.contentType.sys.id === 'link'
 }
 
+export interface TypeListFields {
+    title?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeNavigationSkeleton | TypeTextSkeleton>>;
+}
+
+export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
+export type TypeList<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeListSkeleton, Modifiers, Locales>;
+
+export function isTypeList<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeList<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'list'
+}
+
 export interface TypeNavigationFields {
+    title?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
 }
@@ -84,7 +114,7 @@ export interface TypePageFields {
     title: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     description?: EntryFieldTypes.Text;
-    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeHeroSkeleton | TypeTextSkeleton>>;
+    content?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeGridSkeleton | TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
