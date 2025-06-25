@@ -156,7 +156,7 @@ h6,
 .h6 {
 	font-size: $s0;
 	font-family: $body_font;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	line-height: 1.33333333;
 
 	&:not(.col) {
@@ -766,4 +766,45 @@ dialog {
 
 .nobr {
 	white-space: nowrap;
+}
+
+.beige {
+	color: $noir;
+	background-color: $beige;
+}
+.brun-fonce {
+	color: $blanc;
+	background-color: $brun-fonce;
+}
+.brun {
+	color: $noir;
+	background-color: $brun;
+}
+.gris-fonce {
+	color: $blanc;
+	background-color: $gris-fonce;
+}
+.gris {
+	color: $noir;
+	background-color: $gris;
+}
+.gris-pale {
+	color: $noir;
+	background-color: $gris-pale;
+}
+.bleu {
+	color: $blanc;
+	background-color: $bleu;
+}
+.vert {
+	color: $blanc;
+	background-color: $vert;
+}
+.noir {
+	color: $blanc;
+	background-color: $noir;
+}
+.blanc {
+	color: $noir;
+	background-color: $blanc;
 }

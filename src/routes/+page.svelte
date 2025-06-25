@@ -1,11 +1,12 @@
 <script lang="ts">
   import type { Entry } from 'contentful'
   
-  import { isTypeHero, isTypeList, isTypeText, type TypeTextSkeleton } from '$lib/clients/content_types'
+  import { isTypeGrid, isTypeHero, isTypeList, isTypeText, type TypeTextSkeleton } from '$lib/clients/content_types'
   import Hero from '$lib/components/Hero.svelte'
   import Text from '$lib/components/Text.svelte'
   import List from '$lib/components/List.svelte'
-
+  import Grid from '$lib/components/Grid.svelte'
+  
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
 </script>
@@ -19,6 +20,8 @@
   <Text {item} />
   {:else if isTypeList(item)}
   <List list={item} />
+  {:else if isTypeGrid(item)}
+  <Grid grid={item} />
   {/if}
 </section>
 {/each}

@@ -7,7 +7,7 @@
   import { onMount } from 'svelte';
   // import Parallax from './Parallax.svelte'
 
-  let { item }: { item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> } = $props()
+  let { item, small }: { item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">, small?: boolean } = $props()
 
   let visible = $state(false)
   let hrElement: HTMLElement
@@ -43,7 +43,11 @@
 <div class="text flex flex--column flex--center" class:media={item.fields.media}>
   <hr bind:this={hrElement}>
   {#if item.fields.title}
+  {#if small}
+  <h6>{item.fields.title}</h6>
+  {:else}
   <h3>{item.fields.title}</h3>
+  {/if}
   {/if}
   {#if item.fields.body}
   <div>
@@ -63,13 +67,15 @@
 <style lang="scss">
   .text {
     padding: $s1;
-    min-height: 100lvh;
 
-    h3 {
+    h3,
+    h6 {
       margin-bottom: $s4;
     }
 
     &.media {
+      min-height: 100lvh;
+
       > div {
         max-width: 555px;
       }
@@ -77,6 +83,7 @@
 
     hr {
       height: 0;
+      margin: 0;
     }
 
     :global(table) {

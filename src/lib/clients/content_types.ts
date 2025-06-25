@@ -34,6 +34,7 @@ export interface TypeGridFields {
     id: EntryFieldTypes.Symbol;
     columns?: EntryFieldTypes.Integer;
     alignments?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    colors?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeTextSkeleton>>;
 }
 

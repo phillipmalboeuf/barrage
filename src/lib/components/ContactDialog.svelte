@@ -14,7 +14,7 @@
 
 {#if visible}
 <dialog class="flex flex--column" open onclose={() => visible = false} transition:fly={{ y: '110%', opacity: 1, duration: 666 }} id="contact-dialog">
-  <h5 class="flex flex--middle flex--gapped flex--spaced">Contact <button class="button--none" aria-controls="menu" aria-expanded={visible ? 'true' : 'false'} onclick={() => visible = !visible}><Icon icon="close" label="Close" /></button></h5>
+  <h5 class="flex flex--middle flex--gapped flex--spaced bleu">Contact <button class="button--none" aria-controls="menu" aria-expanded={visible ? 'true' : 'false'} onclick={() => visible = !visible}><Icon icon="close" label="Close" /></button></h5>
   {#if data.type === 'loaded'}
   <ContactPage data={data.data as any} />
   {/if}
@@ -49,8 +49,6 @@
       top: -1px;
       left: 0;
       width: 100%;
-      color: $blanc;
-      background-color: $bleu;
       padding: $s0;
       border-top-left-radius: $radius;
       border-top-right-radius: $radius;

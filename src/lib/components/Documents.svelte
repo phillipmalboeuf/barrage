@@ -7,7 +7,7 @@
 </script>
 
 
-<div class="documents flex flex--gapped flex--spaced index-{index}">
+<div class="documents flex flex--gapped flex--spaced {['beige', 'bleu', 'vert'][index % 3]}">
   {#if item.fields.links}
   <div class="links flex flex--gapped">
     {#each item.fields.links as link}
@@ -43,17 +43,6 @@
     width: 100%;
     padding: $s1;
     border-radius: $radius;
-    background-color: $beige;
-
-    &.index-1 {
-      color: $blanc;
-      background-color: $vert;
-    }
-
-    &.index-2 {
-      color: $blanc;
-      background-color: $bleu;
-    }
 
     .links {
       width: auto;

@@ -18,7 +18,7 @@
   let form = $state<HTMLFormElement>()
 </script>
 
-<section class="padded">
+<section class="padded gris">
   <form class="question flex flex--column flex--gapped" action={isTypeForm(active) ? active.fields.action : null} method={"POST"} bind:this={form} oninput={() => isValid = form.checkValidity()} onsubmit={e => {
     if (selected && isTypeQuestion(active)) {
       e.preventDefault()
@@ -39,7 +39,7 @@
     </div>
     <div class="answers flex flex--column flex--gapped">
       {#each active.fields.answers as answer}
-      <label class="answer padded flex flex--gapped flex--spaced flex--middle" for="answer-{active.fields.id}-{answer.fields.id}">
+      <label class="answer blanc padded flex flex--gapped flex--spaced flex--middle" for="answer-{active.fields.id}-{answer.fields.id}">
         <span>{answer.fields.label}</span>
         <input type="radio" bind:group={selected} name="answer-{active.fields.id}" id="answer-{active.fields.id}-{answer.fields.id}" value={answer.fields.id} />
       </label>
@@ -51,7 +51,7 @@
     </div>
     <div class="inputs flex flex--column flex--gapped">
       {#each active.fields.inputs as input}
-      <div class="input padded">
+      <div class="input padded blanc">
         <label for="input-{active.fields.id}-{input.fields.id}">{input.fields.label}</label>
         {#if input.fields.type === 'Email'}
         <input type="email" name="{input.fields.id}" id="input-{active.fields.id}-{input.fields.id}" required />
@@ -92,7 +92,6 @@
 
 <style lang="scss">
   section {
-    background-color: $gris;
 
     form {
       max-width: 555px;
@@ -107,7 +106,6 @@
 
         .answer {
           cursor: pointer;
-          background-color: $blanc;
           border-radius: $radius;
         }
       }
@@ -117,7 +115,6 @@
 
         .input {
           width: 100%;
-          background-color: $blanc;
           border-radius: $radius;
         }
       }
