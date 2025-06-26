@@ -88,7 +88,7 @@ export function isTypeLink<Modifiers extends ChainModifiers, Locales extends Loc
 export interface TypeListFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeNavigationSkeleton | TypeTextSkeleton>>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeNavigationSkeleton | TypeTeamMemberSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
@@ -139,11 +139,27 @@ export function isTypeQuestion<Modifiers extends ChainModifiers, Locales extends
     return entry.sys.contentType.sys.id === 'question'
 }
 
+export interface TypeTeamMemberFields {
+    name: EntryFieldTypes.Symbol;
+    qualifications?: EntryFieldTypes.Symbol;
+    jobTitle?: EntryFieldTypes.Symbol;
+    portrait?: EntryFieldTypes.AssetLink;
+    bio?: EntryFieldTypes.RichText;
+}
+
+export type TypeTeamMemberSkeleton = EntrySkeletonType<TypeTeamMemberFields, "teamMember">;
+export type TypeTeamMember<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeTeamMemberSkeleton, Modifiers, Locales>;
+
+export function isTypeTeamMember<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeTeamMember<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'teamMember'
+}
+
 export interface TypeTextFields {
     title?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     body?: EntryFieldTypes.RichText;
     media?: EntryFieldTypes.AssetLink;
+    mediaAlignment?: EntryFieldTypes.Symbol<"Fixed" | "Left" | "Right">;
 }
 
 export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;

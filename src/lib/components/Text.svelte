@@ -40,29 +40,31 @@
 </script>
 
 
-<div class="text flex flex--column flex--center" class:media={item.fields.media}>
+<div class="text flex flex--gapped {item.fields.mediaAlignment}" class:media={item.fields.media}>
   <hr bind:this={hrElement}>
   {#if item.fields.title}
   {#if small}
-  <h6>{item.fields.title}</h6>
+  <h6 class="col col--12of12">{item.fields.title}</h6>
   {:else}
-  <h3>{item.fields.title}</h3>
+  <h3 class="col col--12of12">{item.fields.title}</h3>
   {/if}
   {/if}
   {#if item.fields.body}
-  <div>
+  <div class="text__body col col--6of12">
     <div class="flex flex--column flex--gapped">
       <Rich body={item.fields.body} />
     </div>
   </div>
   {/if}
+
+  {#if item.fields.media}
+  <figure class="padded col col--6of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
+    <Media media={item.fields.media} />
+  </figure>
+  {/if}
 </div>
 
-{#if item.fields.media}
-<figure class="padded text__media" class:visible>
-  <Media media={item.fields.media} />
-</figure>
-{/if}
+
 
 <style lang="scss">
   .text {
@@ -70,14 +72,34 @@
 
     h3,
     h6 {
-      margin-bottom: $s4;
+      // margin-bottom: $s4;
     }
 
     &.media {
-      min-height: 100lvh;
-
       > div {
-        max-width: 555px;
+        > div {
+          max-width: 555px;
+          margin: 0 auto;
+        }
+      }
+
+      &.Fixed {
+        min-height: 100lvh;
+      }
+
+      &.Left {
+        align-items: flex-end;
+        
+        h3,
+        h6,
+        hr {
+          order: -2;
+        }
+
+        figure {
+          order: -1;
+          padding-bottom: 0;
+        }
       }
     }
 
@@ -116,7 +138,7 @@
     }
   }
 
-  .text__media {
+  .text__media--Fixed {
     position: fixed;
     z-index: -2;
     top: 0;

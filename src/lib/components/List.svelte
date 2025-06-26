@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { isTypeNavigation, isTypeText, type TypeListSkeleton } from '$lib/clients/content_types'
+  import { isTypeNavigation, isTypeText, isTypeTeamMember, type TypeListSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
-  import { onMount } from 'svelte'
   
-  import Rich from './Rich.svelte'
-  import Media from './Media.svelte'
   import Text from './Text.svelte'
   import Documents from './Documents.svelte'
+  import TeamMember from './TeamMember.svelte'
   // import Parallax from './Parallax.svelte'
 
   let { list }: { list: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> } = $props()
@@ -26,6 +24,8 @@
       <Text {item} />
       {:else if isTypeNavigation(item)}
       <Documents {item} {index} />
+      {:else if isTypeTeamMember(item)}
+      <TeamMember {item} />
       {/if}
     </div>
     {/each}
