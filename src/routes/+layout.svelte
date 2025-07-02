@@ -12,7 +12,7 @@
 </script>
 
 <div class="flex">
-	<Header navigations={data.navigations} />
+	<Header navigations={data.navigations} form={data.newsletterForm} />
 	<main class="{page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {page.url.pathname.replaceAll('/', '-')} {page.data.page?.fields.couleur}">
 		
 		{@render children()}
@@ -20,7 +20,7 @@
 		<!-- <Articles articles={data.articles.items} full={page.url.pathname === '/actualites'} /> -->
 	</main>
 	<ContactDialog />
-	<Footer navigations={data.navigations} top />
+	<Footer navigations={data.navigations} top form={data.newsletterForm} />
 </div>
 
 

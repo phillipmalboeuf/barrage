@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TypeNavigationSkeleton } from '$lib/clients/content_types';
+  import type { TypeFormSkeleton, TypeNavigationSkeleton } from '$lib/clients/content_types';
   import type { Entry } from 'contentful';
 
   import Icon from './Icon.svelte'
@@ -7,8 +7,9 @@
   import { fly } from 'svelte/transition';
   import { onNavigate } from '$app/navigation';
 
-  let { navigations }: {
+  let { navigations, form }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
+    form: Entry<TypeFormSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
     // buttons: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
     // work: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
@@ -59,7 +60,7 @@
     </button>
     {#if menuOpen}
     <dialog open id="menu" transition:fly={{ x: '100%', opacity: 1, duration: 666 }}>
-      <Footer navigations={navigations} />
+      <Footer navigations={navigations} {form} />
     </dialog>
     {/if}
   </nav>

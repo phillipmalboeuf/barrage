@@ -5,6 +5,7 @@
   import { isTypeForm, isTypeQuestion, type TypeFormSkeleton, type TypeQuestionSkeleton } from '$lib/clients/content_types'
 
   import Rich from '$lib/components/Rich.svelte'
+  import Inputs from '$lib/components/Inputs.svelte'
 
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
@@ -49,22 +50,7 @@
     <div class="body">
       <Rich body={active.fields.introduction} />
     </div>
-    <div class="inputs flex flex--column flex--gapped">
-      {#each active.fields.inputs as input}
-      <div class="input padded blanc">
-        <label for="input-{active.fields.id}-{input.fields.id}">{input.fields.label}</label>
-        {#if input.fields.type === 'Email'}
-        <input type="email" name="{input.fields.id}" id="input-{active.fields.id}-{input.fields.id}" required />
-        {:else if input.fields.type === 'Phone'}
-        <input type="tel" name="{input.fields.id}" id="input-{active.fields.id}-{input.fields.id}" required />
-        {:else if input.fields.type === 'Text'}
-        <input type="text" name="{input.fields.id}" id="input-{active.fields.id}-{input.fields.id}" required />
-        {:else if input.fields.type === 'Textarea'}
-        <textarea name="{input.fields.id}" id="input-{active.fields.id}-{input.fields.id}" required></textarea>
-        {/if}
-      </div>
-      {/each}
-    </div>
+    <Inputs form={active} />
     {/if}
 
     {#if error}
@@ -106,15 +92,6 @@
 
         .answer {
           cursor: pointer;
-          border-radius: $radius;
-        }
-      }
-
-      .inputs {
-        // margin-bottom: $s4;
-
-        .input {
-          width: 100%;
           border-radius: $radius;
         }
       }

@@ -227,14 +227,6 @@ a {
 	// * {
 	// 	pointer-events: none;
 	// }
-
-	&:has(> u) {
-		font-weight: 600;
-		
-		u {
-			text-underline-offset: 0.5em;
-		}
-	}
 }
 
 a:hover {
@@ -365,8 +357,8 @@ textarea {
 	padding: ($s-2) 0;
 
 	&:focus {
-		outline: 1px solid $accent;
-		outline-offset: 0px;
+		outline: 2px solid;
+		outline-offset: 2px;
 	}
 
 	&::placeholder {
@@ -395,6 +387,7 @@ textarea {
 }
 
 textarea {
+	display: block;
 	height: $base * 10;
 	resize: none;
 }
@@ -411,6 +404,7 @@ input[type=checkbox] {
 	outline: 2px solid;
 	outline-offset: 2px;
 	border: none;
+	border-radius: 1px;
 
 	&:checked {
 		background-color: currentColor;
