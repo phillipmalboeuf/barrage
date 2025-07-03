@@ -50,7 +50,7 @@
   {/if}
   {/if}
   {#if item.fields.body}
-  <div class="text__body col col--6of12">
+  <div class="text__body col" class:col--6of12={item.fields.media} class:col--12of12={!item.fields.media}>
     <div class="flex flex--column flex--gapped">
       <Rich body={item.fields.body} />
     </div>
@@ -125,7 +125,7 @@
     }
 
     :global(td) {
-      height: 315px;
+      height: 15vw;
     }
 
     :global(tr:nth-child(even) td) {

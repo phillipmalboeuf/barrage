@@ -22,6 +22,9 @@
   let menuOpen = $state(false)
 
   $effect(() => {
+    if (menuOpen && scrollY < 45) {
+      window.scrollTo({ top: 45, behavior: 'instant' })
+    }
     document.documentElement.classList.toggle('noscroll', menuOpen)
   })
 

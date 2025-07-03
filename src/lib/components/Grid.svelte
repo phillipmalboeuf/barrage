@@ -35,7 +35,6 @@
 <style lang="scss">
   .grid {
     padding: $s1;
-    min-height: 100lvh;
 
     h3 {
       margin-bottom: $s4;
@@ -48,14 +47,19 @@
 
       .grid__item {
         width: 100%;
+        min-height: 15vw;
         border-radius: $radius;
         grid-area: var(--alignment, auto);
 
         :global(.text) {
           height: 100%;
 
+          :global(hr) {
+            display: none;
+          }
+
           :global(h6) {
-            align-self: flex-end;
+            text-align: right;
           }
 
           :global(h6 + div) {

@@ -5,6 +5,9 @@
 
   import Rich from './Rich.svelte'
   import Inputs from './Inputs.svelte'
+  import Icon from './Icon.svelte'
+  
+  import { openContactDialog } from '$lib/stores/contact.svelte'
 
   let { navigations, form, top=false }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -15,15 +18,15 @@
 
 <footer class="padded flex">
   {#if top}
-  <div class="flex flex--gapped flex--end">
+  <div class="top">
     <button class="button--none" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-      Top
+      Top <Icon icon="top" label={undefined} />
     </button>
   </div>
   {/if}
   
   <div class="col col--8of12">
-    <nav class="flex flex--gapped">
+    <nav class="flex flex--gapped flex--column">
       <div class="col col--12of12 main-nav">
         <div class="flex flex--column flex--gapped">
         {#each navigations.main.fields.links as link}
@@ -46,6 +49,7 @@
   </div>
   
   <div class="col col--4of12">
+    <div class="flex flex--column flex--gapped forms">
     {#if form}
     <div class="flex flex--column flex--gapped form padded">
       <Rich body={form.fields.introduction} />
@@ -59,11 +63,19 @@
       </form>
     </div>
     {/if}
+    <div class="flex flex--column flex--gapped contact padded">
+      <h4>Want to become a client, or have somes questions?<br>↘</h4>
+      <button type="button" onclick={openContactDialog}>
+        Contact <Icon icon="email" label={undefined} />
+      </button>
+    </div>
+    </div>
   </div>
 </footer>
 
 <style lang="scss">
   footer {
+    position: relative;
     min-height: 100lvh;
     padding-top: 120px;
     background-color: $blanc;
@@ -71,6 +83,16 @@
 
     nav {
       max-width: 524px;
+      min-height: 100%;
+    }
+
+    .top {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: $s1;
+      background-color: $blanc;
+      z-index: 999;
     }
 
     .main-nav {
@@ -106,11 +128,18 @@
       }
     }
 
+    .forms {
+      height: 100%;
+    }
+
     .form {
       background-color: $gris-pale;
       border-radius: $s2;
+      flex: 1;
 
       form {
+        margin-top: auto;
+        
         label {
           flex-wrap: nowrap;
 
@@ -123,6 +152,21 @@
           margin-top: $s1;
           align-self: flex-end;
         }
+      }
+    }
+
+    .contact {
+      position: relative;
+      z-index: 1001;
+      background-color: $bleu;
+      border-radius: $s2;
+      color: $blanc;
+      flex: 1;
+
+      button {
+        border: 1px solid;
+        margin-top: auto;
+        margin-left: auto;
       }
     }
   }

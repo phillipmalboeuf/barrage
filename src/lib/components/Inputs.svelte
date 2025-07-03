@@ -51,6 +51,10 @@
         border: none;
         padding: $s0;
         border-radius: $radius;
+
+        &::placeholder {
+          opacity: 0;
+        }
       }
     }
   }
