@@ -38,6 +38,11 @@
       &.flex--middle {
         text-align: center;
         max-width: 1000px;
+        font-style: italic;
+
+        :global(strong) {
+          font-style: normal;
+        }
       }
 
       &.left {
@@ -48,12 +53,6 @@
           max-width: 520px;
           margin: 0 auto;
         }
-      }
-
-      font-style: italic;
-
-      :global(strong) {
-        font-style: normal;
       }
     }
 
