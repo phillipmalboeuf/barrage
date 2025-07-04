@@ -50,11 +50,11 @@
         }
       }
 
-      // font-style: italic;
+      font-style: italic;
 
-      // :global(strong) {
-      //   font-style: normal;
-      // }
+      :global(strong) {
+        font-style: normal;
+      }
     }
 
     figure {
