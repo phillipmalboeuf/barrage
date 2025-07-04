@@ -30,9 +30,14 @@
 
 <style lang="scss">
   section {
+    margin: $s7 0;
 
     &.hero:first-child {
       margin-top: -130px;
+    }
+
+    &.hero + &.hero {
+      margin-top: calc($s7 * -1);
     }
   }
 </style>

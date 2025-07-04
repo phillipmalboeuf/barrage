@@ -15,8 +15,10 @@
     <Media media={item.fields.media} />
     {/if}
   </figure>
-  <div class="hero__content padded">
-    <Rich body={item.fields.body} />
+  <div class="hero__content padded {item.fields.alignment === 'Left' ? 'left' : 'flex--middle'}">
+    <div class="flex flex--column flex--gapped flex--spaced">
+      <Rich body={item.fields.body} />
+    </div>
   </div>
 </div>
 
@@ -32,8 +34,27 @@
 
     &__content {
       padding: $s1;
-      text-align: center;
-      max-width: 1000px;
+      
+      &.flex--middle {
+        text-align: center;
+        max-width: 1000px;
+      }
+
+      &.left {
+        width: 50%;
+        align-self: flex-end;
+
+        > div {
+          max-width: 520px;
+          margin: 0 auto;
+        }
+      }
+
+      // font-style: italic;
+
+      // :global(strong) {
+      //   font-style: normal;
+      // }
     }
 
     figure {

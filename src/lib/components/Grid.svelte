@@ -42,13 +42,13 @@
     padding: $s1;
 
     h3 {
-      margin-bottom: $s4;
+      margin-bottom: $s5;
     }
 
     .grid__items {
       display: grid;
       grid-template-columns: repeat(var(--columns, 2), 1fr);
-      grid-auto-rows: 15vw;
+      grid-auto-rows: 16vw;
       gap: $s0;
 
       .grid__item {
@@ -61,6 +61,16 @@
 
           :global(hr) {
             display: none;
+          }
+
+          :global(h2), :global(h3), :global(h4), :global(h5) {
+            font-family: $body_font;
+            // max-width: 530px;
+
+            :global(strong) {
+              font-size: 160px;
+              font-weight: 300;
+            }
           }
 
           :global(h6) {

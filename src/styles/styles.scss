@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6,
 	display: block;
 	font-family: $heading_font;
 	// text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 300;
 	letter-spacing: -0.02em;
 	line-height: 0.9;
 	white-space: pre-line;
@@ -117,7 +117,7 @@ h2,
 h3,
 .h3 {
 	font-size: $s3;
-	line-height: 1;
+	line-height: 1.1;
 
 	@media (max-width: $mobile) {
     font-size: $s2;
@@ -170,7 +170,11 @@ h6,
 p {
 	width: 100%;
 	white-space: pre-line;
-	// max-width: 66ch;
+	
+	
+	&:empty {
+		display: none;
+	}
 
 
 	.mid &,
