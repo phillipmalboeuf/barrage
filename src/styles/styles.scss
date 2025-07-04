@@ -66,6 +66,8 @@ h1, h2, h3, h4, h5, h6,
 
 	strong {
 		font-weight: 600;
+		font-size: 0.89em;
+		font-family: $body_font;
 	}
 
 	&.h--alt {
@@ -81,7 +83,7 @@ h1, h2, h3, h4, h5, h6,
 
 h1,
 .h1 {
-	font-size: $s5;
+	font-size: $s7;
 	line-height: 1;
 
 	// &.h--alt {
@@ -125,6 +127,7 @@ h3,
 h4,
 .h4 {
 	font-size: $s2;
+	font-family: $body_font;
 	line-height: 1.1;
 
 	@media (max-width: $mobile) {
@@ -139,7 +142,7 @@ h4,
 h5,
 .h5 {
 	font-size: $s1;
-	// font-family: $body_font;
+	font-family: $body_font;
 	// font-weight: 600;
 	line-height: 1.2;
 
@@ -155,7 +158,7 @@ h5,
 h6,
 .h6 {
 	font-size: $s0;
-	font-family: $body_font;
+	// font-family: $body_font;
 	// text-transform: uppercase;
 	line-height: 1.33333333;
 
@@ -342,6 +345,7 @@ button,
 
 label {
 	cursor: pointer;
+	font-family: $heading_font;
 }
 
 input,
@@ -349,6 +353,7 @@ select,
 textarea {
 	width: 100%;
 	color: currentColor;
+	font-family: $heading_font;
 	background-color: $blanc;
 	border: none;
 	border-bottom: 1px solid;

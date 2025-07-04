@@ -35,7 +35,7 @@ export interface TypeGridFields {
     columns?: EntryFieldTypes.Integer;
     alignments?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     colors?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeTextSkeleton>>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeGridSkeleton = EntrySkeletonType<TypeGridFields, "grid">;
@@ -75,6 +75,7 @@ export interface TypeLinkFields {
     label: EntryFieldTypes.Symbol;
     destination?: EntryFieldTypes.Symbol;
     asset?: EntryFieldTypes.AssetLink;
+    title?: EntryFieldTypes.Symbol;
     external?: EntryFieldTypes.Boolean;
 }
 

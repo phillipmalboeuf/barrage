@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isTypeNavigation, isTypeText, type TypeGridSkeleton } from '$lib/clients/content_types'
+  import { isTypeLink, isTypeNavigation, isTypeText, type TypeGridSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
   import { onMount } from 'svelte'
   
@@ -21,9 +21,14 @@
   {#if grid.fields.items}
   <div class="grid__items" style:--columns={grid.fields.columns}>
     {#each grid.fields.items as item, index}
-    <div class="grid__item {grid.fields.colors.length > index ? grid.fields.colors?.[index] : 'beige'}" style:--alignment={grid.fields.alignments.length > index ? grid.fields.alignments?.[index] : undefined}>
+    <div class="grid__item {grid.fields.colors.length > index ? grid.fields.colors?.[index] : 'beige'}" style:--alignment={grid.fields.alignments?.length > index ? grid.fields.alignments?.[index] : undefined}>
       {#if isTypeText(item)}
       <Text {item} small />
+      {:else if isTypeLink(item)}
+      <a href={item.fields.destination} class="grid__item__link flex flex--column flex--spaced flex--gapped padded">
+        <h6>{item.fields.title}</h6>
+        <h3>{item.fields.label}</h3>
+      </a>
       {/if}
     </div>
     {/each}
@@ -43,11 +48,11 @@
     .grid__items {
       display: grid;
       grid-template-columns: repeat(var(--columns, 2), 1fr);
+      grid-auto-rows: 15vw;
       gap: $s0;
 
       .grid__item {
         width: 100%;
-        min-height: 15vw;
         border-radius: $radius;
         grid-area: var(--alignment, auto);
 
@@ -64,6 +69,18 @@
 
           :global(h6 + div) {
             margin-top: auto;
+          }
+        }
+
+        .grid__item__link {
+          height: 100%;
+
+          h6 {
+            align-self: flex-end;
+          }
+
+          h3 {
+            margin-bottom: 0;
           }
         }
       }
