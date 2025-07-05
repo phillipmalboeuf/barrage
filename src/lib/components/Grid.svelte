@@ -48,7 +48,7 @@
     .grid__items {
       display: grid;
       grid-template-columns: repeat(var(--columns, 2), 1fr);
-      grid-auto-rows: 16vw;
+      grid-auto-rows: minmax(16vw, auto);
       gap: $s0;
 
       .grid__item {
@@ -67,9 +67,10 @@
             font-family: $body_font;
             // max-width: 530px;
 
-            :global(strong) {
+            :global(u) {
               font-size: 160px;
               font-weight: 300;
+              text-decoration: none;
             }
           }
 

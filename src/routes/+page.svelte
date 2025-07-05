@@ -12,7 +12,7 @@
 </script>
 
 {#if data.page.fields.content?.length}
-{#each data.page.fields.content as item, i}
+{#each data.page.fields.content as item, i (item.sys.id)}
 <section class="{item.sys.contentType.sys.id}">
   {#if isTypeHero(item)}
   <Hero {item} />
