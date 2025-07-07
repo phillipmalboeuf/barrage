@@ -46,7 +46,7 @@
   {#if small}
   <h6 class="col col--12of12">{item.fields.title}</h6>
   {:else}
-  <h3 class="col col--12of12">{item.fields.title}</h3>
+  <h3 class="col col--12of12"><em>{item.fields.title}</em></h3>
   {/if}
   {/if}
   {#if item.fields.body}
@@ -70,9 +70,8 @@
   .text {
     padding: $s1;
 
-    h3,
-    h6 {
-      // margin-bottom: $s4;
+    h3 {
+      margin-bottom: $s6;
     }
 
     &.media {
@@ -122,6 +121,15 @@
       text-align: right;
       background-color: $beige;
       border-radius: $radius;
+
+      :global(u) {
+        font-size: $s2;
+        text-decoration: none;
+      }
+
+      &:has(:global(p:empty)) {
+        background-color: transparent !important;
+      }
     }
 
     :global(td) {

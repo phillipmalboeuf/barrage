@@ -34,6 +34,10 @@
 
     &__content {
       padding: $s1;
+
+      :global(p) {
+        font-size: $s1;
+      }
       
       &.flex--middle {
         text-align: center;

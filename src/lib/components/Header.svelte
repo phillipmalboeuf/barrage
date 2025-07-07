@@ -1,11 +1,14 @@
 <script lang="ts">
-  import type { TypeFormSkeleton, TypeNavigationSkeleton } from '$lib/clients/content_types';
-  import type { Entry } from 'contentful';
+  import type { TypeFormSkeleton, TypeNavigationSkeleton } from '$lib/clients/content_types'
+  import type { Entry } from 'contentful'
+
+  import { fly } from 'svelte/transition'
+  import { onNavigate } from '$app/navigation'
 
   import Icon from './Icon.svelte'
   import Footer from './Footer.svelte'
-  import { fly } from 'svelte/transition';
-  import { onNavigate } from '$app/navigation';
+  
+  import { headerState } from '$lib/stores/header.svelte'
 
   let { navigations, form }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -18,7 +21,6 @@
   let innerHeight = $state(1000)
   let headerHeight = $state(0)
   let lastScrollY = 0
-  // let scrolled = $derived(scrollY > lastScrollY)
   let menuOpen = $state(false)
 
   $effect(() => {
@@ -39,21 +41,21 @@
 
 <svelte:window bind:scrollY bind:innerHeight onscroll={onScroll} />
 
-<!-- <header class:scrolled={scrollY > innerHeight - (headerHeight / 2)} bind:offsetHeight={headerHeight} class="flex flex--middle"> -->
+<!-- <header bind:offsetHeight={headerHeight} class="flex flex--middle"> -->
   <aside>
     <small>467.02 $ + 4.7% (Nov 29, 2024)</small>
   </aside>
-  <nav class="logo-nav padded" class:open={menuOpen} bind:offsetHeight={headerHeight} class:scrolled={scrollY > innerHeight - (headerHeight / 2)}>
+  <nav class="logo-nav padded" class:open={menuOpen} bind:offsetHeight={headerHeight} class:dark={headerState.dark} bind:this={headerState.element}>
     <a href="/">
       <Icon icon="logo" label="Barrage Capital" />
     </a>
   </nav>
-  <nav class="main-nav padded flex flex--gapped flex--middle">
+  <nav class="main-nav padded flex flex--gapped flex--middle" class:dark={headerState.dark}>
     {#each navigations.main.fields.links as link}
       <a href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
     {/each}
   </nav>
-  <nav class="menu-nav padded" class:open={menuOpen} class:scrolled={scrollY > innerHeight - (headerHeight / 2)}>
+  <nav class="menu-nav padded" class:open={menuOpen} class:dark={headerState.dark}>
     <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen}>
       {#if menuOpen}
         <Icon icon="close" label="Close" />
@@ -83,7 +85,7 @@
   //   //   transform: translateY(-100%);
   //   // }
 
-  //   &.scrolled {
+  //   &.dark {
   //     // background-color: fade-out($blanc, 0.1);
   //     // backdrop-filter: blur(10px);
   //     color: $noir;
@@ -103,6 +105,12 @@
       transition: color 666ms;
       position: relative;
       z-index: 99;
+
+      color: $noir;
+
+      &.dark {
+        color: $blanc;
+      }
       
       a {
         transition: transform 333ms;
@@ -111,14 +119,6 @@
         &:focus-visible {
           font-style: italic;
           transform: translateY(-3px);
-        }
-      }
-
-      :global(body:has(> div > div > main > .hero:first-child)) & {
-        color: $blanc;
-
-        &.scrolled {
-          color: $noir;
         }
       }
 
