@@ -2,6 +2,6 @@ export const headerState = $state<{
   dark: boolean
   element: HTMLElement | null
 }>({
-  dark: false,
+  dark: true,
   element: null,
 })
