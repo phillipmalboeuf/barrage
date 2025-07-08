@@ -605,6 +605,10 @@ dialog {
 	@media (min-width: $tablet_landscape) {
 		padding: $s2;
 	}
+
+	@media (max-width: $tablet_portrait) {
+		padding: $s-2;
+	}
 }
 
 	.padded--tight {
@@ -660,9 +664,9 @@ dialog {
   &.flex--gapped {
     --gap: #{$s0};
 
-    // @media (max-width: $mobile) {
-    //   --gap: #{$s-1};
-    // }
+    @media (max-width: $tablet_portrait) {
+      --gap: #{$s-3};
+    }
 
 		// hr {
 		// 	margin: 0;

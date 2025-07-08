@@ -28,6 +28,12 @@
     bottom: $s2;
     right: $s2;
     z-index: 1000;
+
+    @media (max-width: $tablet_portrait) {
+      right: 50%;
+      bottom: $s-2;
+      transform: translateX(50%);
+    }
   }
 
   dialog {
@@ -44,8 +50,23 @@
     border-radius: $radius;
     display: block !important;
 
+    @media (max-width: $tablet_portrait) {
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      max-width: 100%;
+      max-height: calc(100lvh);
+      height: 100lvh;
+
+      :global(> section) {
+        height: 100%;
+      }
+    }
+
     h5 {
       position: sticky;
+      z-index: 2;
       top: -1px;
       left: 0;
       width: 100%;

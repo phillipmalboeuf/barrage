@@ -35,6 +35,10 @@
     &__content {
       padding: $s1;
 
+      @media (max-width: $tablet_portrait) {
+        padding: $s-2;
+      }
+
       :global(p) {
         font-size: $s1;
       }
@@ -52,6 +56,11 @@
       &.left {
         width: 50%;
         align-self: flex-end;
+
+        @media (max-width: $tablet_portrait) {
+          width: 100%;
+          align-self: center;
+        }
 
         > div {
           max-width: 520px;

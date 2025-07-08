@@ -50,7 +50,7 @@
   {/if}
   {/if}
   {#if item.fields.body}
-  <div class="text__body col" class:col--6of12={item.fields.media} class:col--12of12={!item.fields.media}>
+  <div class="text__body col col--tablet--12of12" class:col--6of12={item.fields.media} class:col--12of12={!item.fields.media}>
     <div class="flex flex--column flex--gapped">
       <Rich body={item.fields.body} />
     </div>
@@ -58,7 +58,7 @@
   {/if}
 
   {#if item.fields.media}
-  <figure class="padded col col--6of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
+  <figure class="padded col col--6of12 col--tablet--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
     <Media media={item.fields.media} />
   </figure>
   {/if}
@@ -69,6 +69,10 @@
 <style lang="scss">
   .text {
     padding: $s1;
+
+    @media (max-width: $tablet_portrait) {
+      padding: $s-2;
+    }
 
     h3 {
       margin-bottom: $s6;
@@ -83,7 +87,21 @@
       }
 
       &.Fixed {
-        min-height: 100lvh;
+        @media (min-width: $tablet_portrait) {
+          min-height: 100lvh;
+        }
+
+        h3,
+        h6 {
+          position: sticky;
+          top: 80px;
+          z-index: 1;
+
+          @media (max-width: $tablet_portrait) {
+            order: -2;
+            top: 40px;
+          }
+        }
       }
 
       &.Left {
@@ -111,6 +129,12 @@
       width: 100%;
       border-collapse: separate;
       border-spacing: 10px;
+
+      @media (max-width: $tablet_portrait) {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+      }
     }
 
     :global(th),
@@ -121,6 +145,7 @@
       text-align: right;
       background-color: $beige;
       border-radius: $radius;
+      min-width: 160px;
 
       :global(u) {
         font-size: $s2;
@@ -147,26 +172,32 @@
   }
 
   .text__media--Fixed {
-    position: fixed;
-    z-index: -2;
-    top: 0;
-    right: 0;
-    height: 100lvh;
-    width: 50%;
-    
-    opacity: 0;
-    transition: opacity 0.666s;
+    @media (min-width: $tablet_portrait) {
+      position: fixed;
+      z-index: -2;
+      top: 0;
+      right: 0;
+      height: 100lvh;
+      width: 50%;
+      
+      opacity: 0;
+      transition: opacity 0.666s;
 
-    &.visible {
-      opacity: 1;
+      &.visible {
+        opacity: 1;
+      }
+
+      :global(picture),
+      :global(img),
+      :global(video) {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
     }
 
-    :global(picture),
-    :global(img),
-    :global(video) {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    @media (max-width: $tablet_portrait) {
+      order: -1;
     }
   }
 </style>

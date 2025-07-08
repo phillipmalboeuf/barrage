@@ -98,6 +98,12 @@
       width: 100%;
       padding: $s-3;
       text-align: right;
+
+      @media (max-width: $tablet_portrait) {
+        small {
+          font-size: $s-2;
+        }
+      }
     }
 
     nav {
@@ -124,6 +130,10 @@
 
       &.main-nav {
         margin-left: auto;
+
+        @media (max-width: $tablet_portrait) {
+          display: none;
+        }
       }
 
       &:not(.main-nav) {
@@ -139,6 +149,13 @@
         &.open {
           color: $noir !important;
         }
+
+        @media (max-width: $tablet_portrait) {
+          :global(svg) {
+            height: 22px;
+            width: auto;
+          }
+        }
       }
 
       &.menu-nav {
@@ -148,6 +165,10 @@
           button {
             color: $noir;
           }
+        }
+
+        @media (max-width: $tablet_portrait) {
+          margin-left: auto;
         }
 
         button {
@@ -162,6 +183,13 @@
           &:focus-visible {
             :global(svg) {
               transform: scale(1.25);
+            }
+          }
+
+          @media (max-width: $tablet_portrait) {
+            :global(svg) {
+              height: 22px;
+              width: auto;
             }
           }
         }

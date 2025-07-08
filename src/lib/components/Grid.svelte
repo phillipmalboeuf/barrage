@@ -41,6 +41,10 @@
   .grid {
     padding: $s1;
 
+    @media (max-width: $tablet_portrait) {
+      padding: $s-2;
+    }
+
     h3 {
       margin-bottom: $s6;
     }
@@ -51,10 +55,19 @@
       grid-auto-rows: minmax(16vw, auto);
       gap: $s0;
 
+      @media (max-width: $tablet_portrait) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(33vh, auto);
+        gap: $s-2;
+      }
+
       .grid__item {
         width: 100%;
         border-radius: $radius;
-        grid-area: var(--alignment, auto);
+
+        @media (min-width: $tablet_portrait) {
+          grid-area: var(--alignment, auto);
+        }
 
         :global(.text) {
           height: 100%;
@@ -71,6 +84,10 @@
               font-size: 160px;
               font-weight: 300;
               text-decoration: none;
+
+              @media (max-width: $tablet_portrait) {
+                font-size: 60px;
+              }
             }
           }
 

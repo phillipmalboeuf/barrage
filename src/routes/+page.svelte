@@ -113,6 +113,10 @@
 
     &.hero:first-child {
       margin-top: -130px;
+
+      @media (max-width: $tablet_portrait) {
+        margin-top: -90px;
+      }
     }
 
     &.hero + &.hero {

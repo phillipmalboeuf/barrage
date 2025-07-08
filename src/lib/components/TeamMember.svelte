@@ -11,11 +11,11 @@
 
 <div class="member flex flex--gapped">
   {#if item.fields.portrait}
-  <figure class="col col--4of12 member__media">
+  <figure class="col col--4of12 col--tablet--12of12 member__media">
     <Media media={item.fields.portrait} />
   </figure>
   {/if}
-  <div class="col col--8of12">
+  <div class="col col--8of12 col--tablet--12of12">
     {#if item.fields.name}
     <h6>{item.fields.name}{#if item.fields.qualifications}<br>{item.fields.qualifications}{/if}</h6>
     {/if}
@@ -37,8 +37,16 @@
     max-width: 1080px;
     margin: 0 auto;
 
+    @media (max-width: $tablet_portrait) {
+      margin-bottom: $s1;
+    }
+
     h6 {
       margin-bottom: $s4;
+
+      @media (max-width: $tablet_portrait) {
+        margin-bottom: $s0;
+      }
     }
   }
 </style>

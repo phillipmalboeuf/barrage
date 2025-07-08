@@ -39,6 +39,10 @@
     padding: $s1;
     min-height: 100lvh;
 
+    @media (max-width: $tablet_portrait) {
+      padding: $s-2;
+    }
+
     h3 {
       margin-bottom: $s4;
     }
