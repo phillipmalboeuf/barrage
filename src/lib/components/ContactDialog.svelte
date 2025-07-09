@@ -3,14 +3,17 @@
   import { fly } from 'svelte/transition'
 
   import ContactPage from '../../routes/contact/+page.svelte'
+  import NewsletterPage from '../../routes/newsletter/+page.svelte'
   import Icon from './Icon.svelte'
 
-  import { contactState, openContactDialog, closeContactDialog } from '$lib/stores/contact.svelte'
+  import { contactState, openContactDialog, closeContactDialog, openNewsletterDialog, closeNewsletterDialog } from '$lib/stores/contact.svelte'
+
+  let { type='contact' }: { type: 'contact' | 'newsletter' } = $props()
 </script>
 
-
+{#if type === 'contact'}
 {#await preloadData('/contact') then data}
-<button type="button" aria-expanded={contactState.visible} aria-controls="contact-dialog" onclick={openContactDialog} transition:fly={{ y: '100%', opacity: 1, duration: 666 }}>Contact <Icon icon="email" label={undefined} /></button>
+<button class="button--fixed" type="button" aria-expanded={contactState.visible} aria-controls="contact-dialog" onclick={openContactDialog} transition:fly={{ y: '100%', opacity: 1, duration: 666 }}>Contact <Icon icon="email" label={undefined} /></button>
 
 {#if contactState.visible}
 <dialog class="flex flex--column" open onclose={closeContactDialog} transition:fly={{ y: '110%', opacity: 1, duration: 666 }} id="contact-dialog">
@@ -21,9 +24,23 @@
 </dialog>
 {/if}
 {/await}
+{:else if type === 'newsletter'}
+{#await preloadData('/newsletter') then data}
+<button class="flex flex--middle flex--spaced button--grey button--large" type="button" aria-expanded={contactState.newsletter} aria-controls="newsletter-dialog" onclick={openNewsletterDialog} transition:fly={{ y: '100%', opacity: 1, duration: 666 }}><span>Sign up to our newsletter</span> <Icon icon="newsletter" label={undefined} /></button>
+
+{#if contactState.newsletter}
+<dialog class="flex flex--column" open onclose={closeNewsletterDialog} transition:fly={{ y: '110%', opacity: 1, duration: 666 }} id="newsletter-dialog">
+  <h5 class="flex flex--middle flex--gapped flex--spaced bleu">Newsletter form <button class="button--none" aria-controls="newsletter-dialog" aria-expanded={contactState.newsletter ? 'true' : 'false'} onclick={() => contactState.newsletter = !contactState.newsletter}><Icon icon="close" label="Close" /></button></h5>
+  {#if data.type === 'loaded'}
+  <NewsletterPage data={data.data as any} />
+  {/if}
+</dialog>
+{/if}
+{/await}
+{/if}
 
 <style lang="scss">
-  button:not(.button--none) {
+  button.button--fixed {
     position: fixed;
     bottom: $s2;
     right: $s2;
@@ -58,9 +75,10 @@
       max-width: 100%;
       max-height: calc(100lvh);
       height: 100lvh;
+      border-radius: 0;
 
       :global(> section) {
-        height: 100%;
+        height: calc(100% - $s3*2);
       }
     }
 
@@ -73,6 +91,10 @@
       padding: $s0;
       border-top-left-radius: $radius;
       border-top-right-radius: $radius;
+
+      @media (max-width: $tablet_portrait) {
+        border-radius: 0;
+      }
     }
   }
 </style>

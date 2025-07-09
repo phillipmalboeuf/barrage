@@ -91,7 +91,8 @@ h1,
 	// }
 
 	@media (max-width: $mobile) {
-    font-size: $s3;
+    font-size: $s4;
+		line-height: 1.1;
   }
 }
 
@@ -107,7 +108,7 @@ h1,
 h2,
 .h2 {
 	font-size: $s4;
-	line-height: 1;
+	line-height: 1.1;
 
 	@media (max-width: $mobile) {
     font-size: $s3;
@@ -281,7 +282,7 @@ button,
 	transition: background-color 333ms, color 333ms;
 
 	&.button--large {
-		padding: ($s0) ($s1);
+		padding: ($s-1) ($s2);
 	}
 
 	&.button--full {

@@ -8,6 +8,7 @@
   import Icon from './Icon.svelte'
   
   import { openContactDialog } from '$lib/stores/contact.svelte'
+  import ContactDialog from './ContactDialog.svelte';
 
   let { navigations, form, top=false }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -39,7 +40,11 @@
           <button class:active={getLocale() === 'fr'} onclick={() => setLocale('fr')}>Français</button>
           <button class:active={getLocale() === 'en'} onclick={() => setLocale('en')}>English</button>
         </div>
+        <div class="tablet_only">
+          <ContactDialog type="newsletter" />
+        </div>
       </div>
+      
       <div class="col col--12of12 flex flex--gapped">
       {#each navigations.footer.fields.links as link}
         <a href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
@@ -50,25 +55,25 @@
   
   <div class="col col--4of12 col--tablet--12of12">
     <div class="flex flex--column flex--gapped forms">
-    {#if form}
-    <div class="flex flex--column flex--gapped form padded">
-      <Rich body={form.fields.introduction} />
-      <form action={form.fields.action} method="post" class="flex flex--column flex--gapped">
-        <Inputs {form} />
-        <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
-          <input type="checkbox" name="accept" id="input-newsletter-accept" required />
-          <span>I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a></span>
-        </label>
-        <button type="submit">Send <span>→</span></button>
-      </form>
-    </div>
-    {/if}
-    <div class="flex flex--column flex--gapped contact padded">
-      <h4>Want to become a client, or have somes questions?<br>↘</h4>
-      <button type="button" onclick={openContactDialog}>
-        Contact <Icon icon="email" label={undefined} />
-      </button>
-    </div>
+      {#if form}
+      <div class="flex flex--column flex--gapped form padded">
+        <Rich body={form.fields.introduction} />
+        <form action={form.fields.action} method="post" class="flex flex--column flex--gapped">
+          <Inputs {form} />
+          <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
+            <input type="checkbox" name="accept" id="input-newsletter-accept" required />
+            <span>I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a></span>
+          </label>
+          <button type="submit">Send <span>→</span></button>
+        </form>
+      </div>
+      {/if}
+      <div class="flex flex--column flex--gapped contact padded">
+        <h4>Want to become a client, or have somes questions?<br>↘</h4>
+        <button type="button" onclick={openContactDialog}>
+          Contact <Icon icon="email" label={undefined} />
+        </button>
+      </div>
     </div>
   </div>
 </footer>
@@ -102,6 +107,10 @@
     .main-nav {
       margin-bottom: auto;
 
+      @media (max-width: $tablet_portrait) {
+        margin: $s4 0;
+      }
+
       a {
         transition: transform 333ms;
 
@@ -115,6 +124,10 @@
 
     .locale-nav {
       margin-top: auto;
+
+      @media (max-width: $tablet_portrait) {
+        order: 99;
+      }
     }
 
     .button-group {
@@ -134,10 +147,18 @@
       @media (max-width: $tablet_portrait) {
         width: 100%;
         padding: calc($s-2 / 2);
+        margin-bottom: $s-3;
+        margin-top: $s2;
 
         button {
           flex: 1;
         }
+      }
+    }
+
+    .tablet_only {
+      @media (min-width: $tablet_portrait) {
+        display: none;
       }
     }
 

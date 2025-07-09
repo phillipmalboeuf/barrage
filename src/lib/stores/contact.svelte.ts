@@ -1,5 +1,6 @@
 export const contactState = $state({
   visible: false,
+  newsletter: false,
 })
 
 export const openContactDialog = () => {
@@ -8,4 +9,12 @@ export const openContactDialog = () => {
 
 export const closeContactDialog = () => {
   contactState.visible = false
+}
+
+export const openNewsletterDialog = () => {
+  contactState.newsletter = true
+}
+
+export const closeNewsletterDialog = () => {
+  contactState.newsletter = false
 }

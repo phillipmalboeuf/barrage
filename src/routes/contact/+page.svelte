@@ -19,7 +19,7 @@
   let form = $state<HTMLFormElement>()
 </script>
 
-<section class="padded gris">
+<section class="gris">
   <form class="question flex flex--column flex--gapped" action={isTypeForm(active) ? active.fields.action : null} method={"POST"} bind:this={form} oninput={() => isValid = form.checkValidity()} onsubmit={e => {
     if (selected && isTypeQuestion(active)) {
       e.preventDefault()
@@ -40,7 +40,7 @@
     </div>
     <div class="answers flex flex--column flex--gapped">
       {#each active.fields.answers as answer}
-      <label class="answer blanc padded flex flex--gapped flex--spaced flex--middle" for="answer-{active.fields.id}-{answer.fields.id}">
+      <label class="answer blanc flex flex--gapped flex--spaced flex--middle" for="answer-{active.fields.id}-{answer.fields.id}">
         <span>{answer.fields.label}</span>
         <input type="radio" bind:group={selected} name="answer-{active.fields.id}" id="answer-{active.fields.id}-{answer.fields.id}" value={answer.fields.id} />
       </label>
@@ -59,7 +59,7 @@
     </div>
     {/if}
 
-    <div class="buttons">
+    <div class="buttons flex flex--spaced">
       {#if history.length > 0}
       <button type="button" onclick={() => {
         const previousQuestion = history.pop()
@@ -69,6 +69,8 @@
         error = null
         selected = null
       }}><span>←</span> Back</button>
+      {:else}
+      <span></span>
       {/if}
       <button type="submit" disabled={isTypeForm(active) ? !isValid : !selected}>{isTypeForm(active) ? 'Send' : 'Next'} <span>→</span></button>
     </div>
@@ -78,9 +80,11 @@
 
 <style lang="scss">
   section {
+    padding: $s2;
 
     form {
       max-width: 555px;
+      min-height: calc(100% - ($s4 * 1));
       margin: 0 auto;
 
       .body {
@@ -93,7 +97,12 @@
         .answer {
           cursor: pointer;
           border-radius: $radius;
+          padding: $s0;
         }
+      }
+
+      .buttons {
+        margin-top: auto;
       }
 
       .error {

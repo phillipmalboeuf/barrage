@@ -41,10 +41,16 @@
         padding: $s0;
         transform: translateY(-50%);
         pointer-events: none;
+        opacity: 0;
 
-        &:not(:has(+ input:placeholder-shown)) {
-          opacity: 0;
+        &:has(+ input:placeholder-shown),
+        &:has(+ textarea:placeholder-shown) {
+          opacity: 1;
         }
+
+         &:has(+ textarea) {
+          top: calc($s0 + $s-2);
+         }
       }
       
       input, textarea {
