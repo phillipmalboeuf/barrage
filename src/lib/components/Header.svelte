@@ -7,6 +7,7 @@
 
   import Icon from './Icon.svelte'
   import Footer from './Footer.svelte'
+  import Rich from './Rich.svelte'
   
   import { headerState } from '$lib/stores/header.svelte'
 
@@ -42,9 +43,11 @@
 <svelte:window bind:scrollY bind:innerHeight onscroll={onScroll} />
 
 <!-- <header bind:offsetHeight={headerHeight} class="flex flex--middle"> -->
+  {#if navigations.main.fields.alert}
   <aside>
-    <small>467.02 $ + 4.7% (Nov 29, 2024)</small>
+    <small><Rich body={navigations.main.fields.alert} /></small>
   </aside>
+  {/if}
   <nav class="logo-nav padded" class:open={menuOpen} bind:offsetHeight={headerHeight} class:dark={headerState.dark} bind:this={headerState.element}>
     <a href="/">
       <Icon icon="logo" label="Barrage Capital" />

@@ -8,7 +8,7 @@
 
   import { contactState, openContactDialog, closeContactDialog, openNewsletterDialog, closeNewsletterDialog } from '$lib/stores/contact.svelte'
 
-  let { type='contact' }: { type: 'contact' | 'newsletter' } = $props()
+  let { type='contact' }: { type?: 'contact' | 'newsletter' } = $props()
 </script>
 
 {#if type === 'contact'}

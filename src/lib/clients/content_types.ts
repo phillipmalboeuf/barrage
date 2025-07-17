@@ -104,6 +104,7 @@ export interface TypeNavigationFields {
     title?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     links?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLinkSkeleton>>;
+    alert?: EntryFieldTypes.RichText;
 }
 
 export type TypeNavigationSkeleton = EntrySkeletonType<TypeNavigationFields, "navigation">;
