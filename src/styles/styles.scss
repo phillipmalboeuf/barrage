@@ -131,6 +131,10 @@ h4,
 	font-family: $body_font;
 	line-height: 1.1;
 
+	em {
+		font-family: $heading_font;
+	}
+
 	@media (max-width: $mobile) {
     font-size: $s1;
   }
@@ -150,6 +154,10 @@ h5,
 	@media (max-width: $mobile) {
     font-size: $s0;
   }
+
+	em {
+		font-family: $heading_font;
+	}
 
 	&:not(.col) {
 		max-width: none;
