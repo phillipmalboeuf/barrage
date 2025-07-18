@@ -101,7 +101,7 @@
       right: 0;
       padding: $s1;
       background-color: $blanc;
-      z-index: 999;
+      z-index: 51;
     }
 
     .main-nav {
@@ -174,7 +174,7 @@
 
     .form {
       background-color: $gris-pale;
-      border-radius: $s2;
+      border-radius: $radius;
       flex: 1;
 
       form {
@@ -197,9 +197,9 @@
 
     .contact {
       position: relative;
-      z-index: 1001;
+      z-index: 49;
       background-color: $bleu;
-      border-radius: $s2;
+      border-radius: $radius;
       color: $blanc;
       flex: 1;
 

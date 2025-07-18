@@ -44,7 +44,7 @@
     position: fixed;
     bottom: $s2;
     right: $s2;
-    z-index: 1000;
+    z-index: 47;
 
     @media (max-width: $tablet_portrait) {
       right: 50%;
@@ -63,7 +63,7 @@
     height: auto;
     max-height: calc(100vh - ($s1 * 2) - 120px);
     overflow-y: auto;
-    z-index: 1002;
+    z-index: 105;
     border-radius: $radius;
     display: block !important;
 

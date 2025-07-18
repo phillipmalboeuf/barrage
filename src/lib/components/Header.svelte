@@ -113,7 +113,7 @@
       width: auto;
       transition: color 666ms;
       position: relative;
-      z-index: 99;
+      z-index: 50;
 
       color: $noir;
 
@@ -143,7 +143,6 @@
       &:not(.main-nav) {
         position: sticky;
         top: 0;
-        z-index: 100;
       }
 
       &.logo-nav {
@@ -163,8 +162,8 @@
       }
 
       &.menu-nav {
-        
         &.open {
+          z-index: 100;
 
           button {
             color: $noir;
@@ -177,7 +176,7 @@
 
         button {
           position: relative;
-          z-index: 101;
+          z-index: 1;
 
           :global(svg) {
             transition: transform 333ms;
@@ -204,7 +203,6 @@
           right: 0;
           width: 100%;
           height: 100%;
-          z-index: 100;
         }
       }
     }
