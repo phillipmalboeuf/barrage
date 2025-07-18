@@ -59,7 +59,7 @@
 
   {#if item.fields.media}
   <figure class="padded col col--6of12 col--tablet--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
-    <Media media={item.fields.media} />
+    <Media media={item.fields.media} ar={item.fields.mediaAlignment === 'Fixed' ? 1 : undefined} />
   </figure>
   {/if}
 </div>
