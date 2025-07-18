@@ -6,7 +6,6 @@
 
 html {
 	font-family: $body_font;
-	font-feature-settings: 'liga' 1, 'calt' 1;
 	font-size: $base;
 	line-height: 1.25;
 
@@ -25,7 +24,7 @@ body {
 
 	font-size: $s0;
 	font-weight: 400;
-	// font-feature-settings: 'ss03' on;
+	font-feature-settings: 'cv11' 1;
 	font-optical-sizing: auto;
 	color: $noir;
 	background-color: $blanc;
@@ -262,7 +261,7 @@ button,
 	font-size: inherit;
 	color: inherit;
 	font-family: $body_font;
-	font-feature-settings: 'ss03' on;
+	// font-feature-settings: 'ss03' on;
 	font-size: $s0;
 	text-transform: inherit;
 	// line-height: 1;

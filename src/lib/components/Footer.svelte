@@ -112,6 +112,8 @@
       }
 
       a {
+        font-family: $body_font;
+        // font-weight: 400;
         transition: transform 333ms;
 
         &:hover,
