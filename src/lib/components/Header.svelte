@@ -21,8 +21,9 @@
   let scrollY = $state(0)
   let innerHeight = $state(1000)
   let headerHeight = $state(0)
-  let lastScrollY = 0
+  // let lastScrollY = 0
   let menuOpen = $state(false)
+  let scrolled = $state(false)
 
   $effect(() => {
     if (menuOpen && scrollY < 45) {
@@ -32,7 +33,8 @@
   })
 
   function onScroll() {
-    lastScrollY = scrollY < 0 ? 0 : scrollY
+    // lastScrollY = scrollY < 0 ? 0 : scrollY
+    scrolled = scrollY > 45
   }
 
   onNavigate(() => {
@@ -59,11 +61,12 @@
     {/each}
   </nav>
   <nav class="menu-nav padded" class:open={menuOpen} class:dark={headerState.dark}>
-    <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen}>
+    <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen} class:scrolled>
+      <span>{#if menuOpen}Close{:else}Menu{/if}</span>
       {#if menuOpen}
-        <Icon icon="close" label="Close" />
+        <Icon icon="close" label={undefined} />
       {:else}
-        <Icon icon="menu" label="Menu" />
+        <Icon icon="menu" label={undefined} />
       {/if}
     </button>
     {#if menuOpen}
@@ -167,6 +170,11 @@
 
           button {
             color: $noir;
+
+            span {
+              opacity: 1;
+              transform: translateY(0);
+            }
           }
         }
 
@@ -178,12 +186,30 @@
           position: relative;
           z-index: 1;
 
+          span {
+            margin-left: calc($s0 * -6);
+            transition: transform 333ms, opacity 333ms;
+            opacity: 0;
+            // transform: translateY(100%);
+          }
+
+          &.scrolled {
+            span {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
           :global(svg) {
             transition: transform 333ms;
           }
 
           &:hover,
           &:focus-visible {
+            // span {
+            //   font-style: italic;
+            // }
+
             :global(svg) {
               transform: scale(1.25);
             }
