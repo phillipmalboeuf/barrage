@@ -1,16 +1,16 @@
 <script lang="ts">
   import type { TypeTextSkeleton } from '$lib/clients/content_types'
-  import type { Entry } from 'contentful'
+  import type { Asset, Entry } from 'contentful'
   
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
   import { onMount } from 'svelte';
   // import Parallax from './Parallax.svelte'
 
-  let { item, small }: { item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">, small?: boolean } = $props()
+  let { item, small, visibleMedia = $bindable() }: { item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">, small?: boolean, visibleMedia?: Asset<"WITHOUT_UNRESOLVABLE_LINKS"> } = $props()
 
   let visible = $state(false)
-  let hrElement: HTMLElement
+  let hrElement: HTMLElement = $state(null)
 
   onMount(() => {
     if (!hrElement) return
@@ -18,10 +18,12 @@
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visible = true
+          visible = !entry.isIntersecting && entry.boundingClientRect.top < 0
+
+          if (visible) {
+            visibleMedia = item.fields.media
           } else {
-            visible = false
+            visibleMedia = null
           }
         })
       },
@@ -41,12 +43,11 @@
 
 
 <div class="text flex flex--gapped {item.fields.mediaAlignment}" class:media={item.fields.media}>
-  <hr bind:this={hrElement}>
   {#if item.fields.title}
   {#if small}
-  <h6 class="col col--12of12">{item.fields.title}</h6>
+  <h6 class="col col--12of12"><hr bind:this={hrElement}>{item.fields.title}</h6>
   {:else}
-  <h3 class="col col--12of12"><em>{item.fields.title}</em></h3>
+  <h3 class="col col--12of12"><hr bind:this={hrElement}><em>{item.fields.title}</em></h3>
   {/if}
   {/if}
   {#if item.fields.body}
@@ -57,12 +58,18 @@
   </div>
   {/if}
 
-  {#if item.fields.media}
+  {#if item.fields.media && item.fields.mediaAlignment !== 'Fixed'}
   <figure class="padded col col--6of12 col--tablet--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
-    <Media media={item.fields.media} ar={item.fields.mediaAlignment === 'Fixed' ? 1 : undefined} />
+    <Media media={item.fields.media} />
   </figure>
   {/if}
 </div>
+
+{#if item.fields.media && item.fields.mediaAlignment === 'Fixed'}
+<!-- <figure class="padded text__media text__media--{item.fields.mediaAlignment}" class:visible>
+  <Media media={item.fields.media} ar={1} />
+</figure> -->
+{/if}
 
 
 
@@ -78,6 +85,18 @@
       margin-bottom: $s6;
     }
 
+    h3,
+    h6 {
+      position: sticky;
+      top: 70px;
+      z-index: 1;
+
+      @media (max-width: $tablet_portrait) {
+        order: -2;
+        top: 40px;
+      }
+    }
+
     &.media {
       > div {
         > div {
@@ -87,20 +106,10 @@
       }
 
       &.Fixed {
+        padding: 0;
+
         @media (min-width: $tablet_portrait) {
           min-height: 100lvh;
-        }
-
-        h3,
-        h6 {
-          position: sticky;
-          top: 80px;
-          z-index: 1;
-
-          @media (max-width: $tablet_portrait) {
-            order: -2;
-            top: 40px;
-          }
         }
       }
 
@@ -121,8 +130,10 @@
     }
 
     hr {
-      height: 0;
+      height: 0px;
       margin: 0;
+      position: relative;
+      top: -71px;
     }
 
     :global(table) {
@@ -173,7 +184,7 @@
 
   .text__media--Fixed {
     @media (min-width: $tablet_portrait) {
-      position: fixed;
+      position: absolute;
       z-index: -2;
       top: 0;
       right: 0;

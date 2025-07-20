@@ -47,6 +47,14 @@
 
     h3 {
       margin-bottom: $s6;
+      position: sticky;
+      top: 70px;
+      z-index: 1;
+
+      @media (max-width: $tablet_portrait) {
+        order: -2;
+        top: 40px;
+      }
     }
 
     .grid__items {
