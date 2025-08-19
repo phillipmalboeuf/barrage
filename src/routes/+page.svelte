@@ -112,7 +112,7 @@
     margin: $s7 0;
 
     &.hero:first-child {
-      margin-top: -130px;
+      margin-top: -120px;
 
       @media (max-width: $tablet_portrait) {
         margin-top: -90px;

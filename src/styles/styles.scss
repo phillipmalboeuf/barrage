@@ -186,7 +186,7 @@ p {
 
 	.mid &,
 	blockquote & {
-		font-size: $s1;
+		font-size: $s2;
 
 		@media (max-width: $mobile) {
 			// font-size: calc($s1 - 2px);
@@ -200,27 +200,37 @@ p {
 }
 
 blockquote {
+	display: flex;
 	position: relative;
 	font-style: normal;
-	max-width: 66ch;
-	padding: 0;
-	margin: $s3 0;
+	// max-width: 66ch;
+	width: 100%;
+	min-height: 15vw;
+	padding: $s0;
+	background-color: $gris-pale;
+	border-radius: $radius;
+	// margin: $s3 0;
 
 	@media (max-width: $mobile) {
     padding-top: $s0;
 		border-top: 1px solid;
   }
 
-	@media (min-width: $mobile) {
-		&:before {
-			content: '';
-			border-left: 1px solid;
-			position: absolute;
-			top: 0;
-			left: calc($s1 * -1);
-			height: 100%;
-		}
+	> * {
+		max-width: 420px;
+		margin-top: auto;
 	}
+
+	// @media (min-width: $mobile) {
+	// 	&:before {
+	// 		content: '';
+	// 		border-left: 1px solid;
+	// 		position: absolute;
+	// 		top: 0;
+	// 		left: calc($s1 * -1);
+	// 		height: 100%;
+	// 	}
+	// }
 }
 
 small,

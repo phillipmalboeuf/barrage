@@ -139,6 +139,7 @@
       width: 100%;
       border-collapse: separate;
       border-spacing: 10px;
+      margin: 0 -10px;
 
       @media (max-width: $tablet_portrait) {
         display: block;
@@ -168,16 +169,22 @@
     }
 
     :global(td) {
-      height: 15vw;
+      // height: 15vw;
+    }
+
+    :global(th) {
+      background-color: $noir;
+      color: $blanc;
+      text-align: left;
     }
 
     :global(tr:nth-child(even) td) {
-      background-color: $brun;
+      background-color: $beige;
     }
 
     :global(tr:nth-child(odd) td) {
-      color: $blanc;
-      background-color: $vert;
+      // color: $blanc;
+      background-color: $gris-pale;
     }
 
     &#volatility {
