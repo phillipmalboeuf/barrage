@@ -42,7 +42,7 @@
 </script>
 
 
-<div class="text flex flex--gapped {item.fields.mediaAlignment}" class:media={item.fields.media}>
+<div class="text flex flex--gapped {item.fields.mediaAlignment}" class:media={item.fields.media} id={item.fields.id}>
   {#if item.fields.title}
   {#if small}
   <h6 class="col col--12of12"><hr bind:this={hrElement}>{item.fields.title}</h6>
@@ -85,8 +85,7 @@
       margin-bottom: $s6;
     }
 
-    h3,
-    h6 {
+    h3 {
       position: sticky;
       top: 70px;
       z-index: 1;
@@ -179,6 +178,18 @@
     :global(tr:nth-child(odd) td) {
       color: $blanc;
       background-color: $vert;
+    }
+
+    &#volatility {
+      .text__body {
+        :global(strong) {
+          font-weight: normal;
+          background-color: $blanc;
+          border-radius: $radius;
+          display: inline-block;
+          width: 1.3em;
+        }
+      }
     }
   }
 

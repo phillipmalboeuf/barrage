@@ -17,7 +17,7 @@
 
 <div class="list flex flex--column">
   {#if list.fields.title}
-  <h3>{list.fields.title}</h3>
+  <h3><em>{list.fields.title}</em></h3>
   {/if}
 
   {#if list.fields.items}

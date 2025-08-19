@@ -138,6 +138,15 @@
       &.main-nav {
         margin-left: auto;
 
+        @media (min-width: $tablet_landscape) {
+          --gap: #{$s3};
+          padding-right: $s3;
+        }
+
+        @media (max-width: $tablet_landscape) {
+          padding-right: $s2;
+        }
+
         @media (max-width: $tablet_portrait) {
           display: none;
         }

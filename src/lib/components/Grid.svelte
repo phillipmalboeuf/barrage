@@ -92,6 +92,7 @@
               font-size: 160px;
               font-weight: 300;
               text-decoration: none;
+              line-height: 0;
 
               @media (max-width: $tablet_portrait) {
                 font-size: 60px;
