@@ -109,7 +109,7 @@
 
 <style lang="scss">
   section {
-    margin: $s7 0;
+    margin: calc($s7 * 2) 0;
 
     &.hero:first-child {
       margin-top: -120px;
@@ -120,7 +120,7 @@
     }
 
     &.hero + &.hero {
-      margin-top: calc($s7 * -1);
+      margin-top: calc($s7 * -2);
     }
   }
 </style>

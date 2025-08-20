@@ -9,21 +9,21 @@
 </script>
 
 
-<div class="member flex flex--gapped">
+<div class="member flex flex--thick_gapped">
   {#if item.fields.portrait}
   <figure class="col col--4of12 col--tablet--12of12 member__media">
-    <Media media={item.fields.portrait} />
+    <Media media={item.fields.portrait} ar={1} />
   </figure>
   {/if}
   <div class="col col--8of12 col--tablet--12of12">
     {#if item.fields.name}
-    <h6>{item.fields.name}{#if item.fields.qualifications}<br>{item.fields.qualifications}{/if}</h6>
+    <h4>{item.fields.name}{#if item.fields.qualifications}<br>{item.fields.qualifications}{/if}</h4>
     {/if}
     {#if item.fields.jobTitle}
     <h6>{item.fields.jobTitle}</h6>
     {/if}
     {#if item.fields.bio}
-    <div class="flex flex--column flex--gapped">
+    <div class="flex flex--column flex--gapped member__bio">
       <Rich body={item.fields.bio} />
     </div>
     {/if}
@@ -41,11 +41,34 @@
       margin-bottom: $s1;
     }
 
-    h6 {
-      margin-bottom: $s4;
+    h4 {
+      margin-bottom: $s1;
 
       @media (max-width: $tablet_portrait) {
         margin-bottom: $s0;
+      }
+    }
+
+    h6 {
+      margin-bottom: $s1;
+
+      @media (max-width: $tablet_portrait) {
+        margin-bottom: $s0;
+      }
+    }
+
+    &__media {
+      :global(img) {
+        border-radius: calc($radius / 2);
+      }
+    }
+
+    &__bio {
+      margin-bottom: $s3;
+
+      :global(p) {
+        font-size: $s-1;
+        max-width: 645px;
       }
     }
   }

@@ -26,8 +26,8 @@
       <Text {item} small />
       {:else if isTypeLink(item)}
       <a href={item.fields.destination} class="grid__item__link flex flex--column flex--spaced flex--gapped padded">
-        <h6>{item.fields.title}</h6>
-        <h3>{item.fields.label}</h3>
+        <h6>{@html item.fields.label.replace('&', '<br>&')}</h6>
+        <h3>{item.fields.title}</h3>
       </a>
       {/if}
     </div>
@@ -45,7 +45,7 @@
       padding: $s-2;
     }
 
-    h3 {
+    > h3 {
       margin-bottom: $s6;
       position: sticky;
       top: 70px;
@@ -59,6 +59,7 @@
 
     .grid__items {
       display: grid;
+      width: 100%;
       grid-template-columns: repeat(var(--columns, 2), 1fr);
       grid-auto-rows: minmax(16vw, auto);
       gap: $s0;
@@ -114,10 +115,12 @@
 
           h6 {
             align-self: flex-end;
+            text-align: right;
           }
 
           h3 {
             margin-bottom: 0;
+            font-family: $body_font;
           }
         }
       }

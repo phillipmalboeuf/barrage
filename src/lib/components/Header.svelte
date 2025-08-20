@@ -34,7 +34,8 @@
 
   function onScroll() {
     // lastScrollY = scrollY < 0 ? 0 : scrollY
-    scrolled = scrollY > 45
+    console.log(window.scrollY)
+    scrolled = window.scrollY > 90
   }
 
   onNavigate(() => {

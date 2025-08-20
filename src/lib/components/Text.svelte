@@ -126,6 +126,11 @@
           padding-bottom: 0;
         }
       }
+
+      :global(img),
+      :global(video) {
+        border-radius: calc($radius / 2);
+      }
     }
 
     hr {
