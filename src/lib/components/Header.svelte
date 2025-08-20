@@ -127,7 +127,6 @@
       
       a {
         transition: transform 333ms;
-        font-feature-settings: 'cv11' 1;
 
         &:hover,
         &:focus-visible {

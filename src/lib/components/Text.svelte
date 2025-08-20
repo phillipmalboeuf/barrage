@@ -195,7 +195,7 @@
     &#volatility {
       .text__body {
         :global(strong) {
-          font-weight: normal;
+          font-weight: 300;
           background-color: $blanc;
           border-radius: $radius;
           display: inline-block;
