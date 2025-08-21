@@ -165,6 +165,11 @@
           color: $noir !important;
         }
 
+        :global(svg) {
+          height: 33px;
+          width: auto;
+        }
+
         @media (max-width: $tablet_portrait) {
           :global(svg) {
             height: 22px;
