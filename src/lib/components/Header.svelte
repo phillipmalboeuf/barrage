@@ -187,6 +187,12 @@
           }
         }
 
+        button:not(.scrolled) {
+          span {
+            pointer-events: none;
+          }
+        }
+
         @media (max-width: $tablet_portrait) {
           margin-left: auto;
         }
@@ -195,8 +201,11 @@
           position: relative;
           z-index: 1;
 
+          
           span {
-            margin-left: calc($s0 * -6);
+            @media (min-width: $tablet_portrait) {
+              margin-left: calc($s0 * -6);
+            }
             transition: transform 333ms, opacity 333ms;
             opacity: 0;
             // transform: translateY(100%);

@@ -115,7 +115,7 @@
       margin-top: -120px;
 
       @media (max-width: $tablet_portrait) {
-        margin-top: -90px;
+        margin-top: -85px;
       }
     }
 
