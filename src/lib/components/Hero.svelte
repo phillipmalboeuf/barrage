@@ -41,6 +41,7 @@
 
       :global(p) {
         font-size: $s1;
+        font-weight: 400;
       }
       
       &.flex--middle {
