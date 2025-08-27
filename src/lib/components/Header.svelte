@@ -126,6 +126,7 @@
       }
       
       a {
+        font-weight: 500;
         transition: transform 333ms;
 
         &:hover,

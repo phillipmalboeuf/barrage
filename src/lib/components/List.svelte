@@ -23,7 +23,7 @@
   {#if list.fields.items}
   <div class="list__items flex flex--column flex--gapped">
     <figure class="list__media">
-      {#if visibleMedia}
+      {#if visibleMedia?.length}
       {#each visibleMedia.filter(m => !!m) as media}
       <div class="list__media__item" transition:fade={{ duration: 666 }}>
         <Media {media} ar={1} />

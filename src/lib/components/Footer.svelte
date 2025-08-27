@@ -114,7 +114,8 @@
       a {
         font-family: $body_font;
         // font-feature-settings: 'cv11' 1;
-        font-weight: 350;
+        font-weight: 400;
+        font-size: $s5;
         transition: transform 333ms;
 
         &:hover,
