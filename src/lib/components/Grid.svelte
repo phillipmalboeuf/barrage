@@ -66,7 +66,7 @@
 
       @media (max-width: $tablet_portrait) {
         grid-template-columns: repeat(1, 1fr);
-        grid-auto-rows: minmax(33vh, auto);
+        grid-auto-rows: minmax(25vh, auto);
         gap: $s-2;
       }
 

@@ -49,6 +49,14 @@
         max-width: 1000px;
         font-style: italic;
 
+        @media (max-width: $tablet_landscape) {
+          max-width: 700px;
+        }
+
+        @media (max-width: $mobile) {
+          max-width: 420px;
+        }
+
         :global(strong) {
           font-style: normal;
         }
