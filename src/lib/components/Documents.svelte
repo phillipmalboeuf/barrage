@@ -50,7 +50,7 @@
       em {
         font-style: normal;
       }
-      @media (max-width: $tablet_portrait) {
+      @media (max-width: $mobile) {
         order: -1;
         margin-bottom: $s0;
         margin-left: auto;
@@ -69,7 +69,7 @@
           width: 180px;
           aspect-ratio: 1 / 1.2;
 
-          @media (max-width: $tablet_portrait) {
+          @media (max-width: $mobile) {
             padding: $s-3;
             width: 80px;
             aspect-ratio: 1 / 1.3;
@@ -85,7 +85,7 @@
             top: $s-1;
             right: $s-1;
 
-            @media (max-width: $tablet_portrait) {
+            @media (max-width: $mobile) {
               height: $s-2;
               width: auto;
               top: $s-3;

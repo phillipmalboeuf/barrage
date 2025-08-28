@@ -141,14 +141,18 @@
     }
 
     :global(table) {
-      width: 100%;
+      table-layout: fixed;
+      width: calc(100% + ($s0 * 2));
       border-collapse: separate;
-      border-spacing: 10px;
-      margin: 0 -10px;
+      border-spacing: $s0;
+      margin: 0 calc($s0 * -1) calc($s0 * -1);
 
       @media (max-width: $tablet_portrait) {
+        width: calc(100% + ($s-2 * 2));
+        border-spacing: $s-2;
+        margin: 0 calc($s-2 * -1) calc($s-2 * -1);
         display: block;
-        max-width: 100%;
+        // max-width: 100%;
         overflow-x: auto;
       }
     }
@@ -164,7 +168,8 @@
       min-width: 160px;
 
       :global(u) {
-        font-size: $s2;
+        font-size: $s3;
+        font-weight: 400;
         text-decoration: none;
       }
 
@@ -178,6 +183,7 @@
     }
 
     :global(th) {
+      font-family: $heading_font;
       background-color: $noir;
       color: $blanc;
       text-align: left;

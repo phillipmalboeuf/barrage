@@ -620,7 +620,7 @@ dialog {
 .padded {
   padding: $s0;
 
-	@media (min-width: $tablet_landscape) {
+	@media (min-width: $tablet_portrait) {
 		padding: $s2;
 	}
 
