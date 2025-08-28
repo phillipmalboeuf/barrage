@@ -50,6 +50,7 @@
       right: 50%;
       bottom: $s-2;
       transform: translateX(50%);
+      z-index: 100;
     }
   }
 

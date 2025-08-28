@@ -26,7 +26,7 @@
   </div>
   {/if}
   
-  <div class="col col--8of12 col--tablet--12of12">
+  <div class="col col--8of12 col--tablet--12of12 navs">
     <nav class="flex flex--gapped flex--column">
       <div class="col col--12of12 main-nav">
         <div class="flex flex--column flex--gapped">
@@ -92,6 +92,7 @@
       min-height: 100%;
 
       @media (max-width: $tablet_portrait) {
+        max-width: none;
         padding-bottom: 80px;
       }
     }
@@ -161,7 +162,7 @@
     }
 
     .tablet_only {
-      @media (min-width: $tablet_portrait) {
+      @media (min-width: #{$tablet_portrait + 1px}) {
         display: none;
       }
     }
@@ -171,6 +172,12 @@
 
       @media (max-width: $tablet_portrait) {
         display: none;
+      }
+    }
+
+    .navs {
+      @media (max-width: $tablet_portrait) {
+        min-height: calc(100svh - 80px);
       }
     }
 
