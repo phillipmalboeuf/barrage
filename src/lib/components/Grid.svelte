@@ -90,10 +90,14 @@
             // max-width: 530px;
 
             :global(u) {
-              font-size: 160px;
+              font-size: 10vw;
               font-weight: 300;
               text-decoration: none;
               line-height: 0;
+
+              @media (max-width: $tablet_landscape) {
+                font-size: 8vw;
+              }
 
               @media (max-width: $tablet_portrait) {
                 font-size: 60px;

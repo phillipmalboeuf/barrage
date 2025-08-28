@@ -75,10 +75,6 @@
       padding: $s-2;
     }
 
-    .text__body {
-      margin: $s6 0;
-    }
-
     h3 {
       position: sticky;
       top: 70px;
@@ -100,6 +96,10 @@
 
       &.Fixed {
         padding: 0;
+
+        .text__body {
+          margin: $s6 0;
+        }
 
         @media (min-width: $tablet_portrait) {
           .text__body {
