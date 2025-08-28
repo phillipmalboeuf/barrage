@@ -7,7 +7,7 @@
   import { onMount } from 'svelte';
   // import Parallax from './Parallax.svelte'
 
-  let { item, small, visibleMedia = $bindable() }: { item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">, small?: boolean, visibleMedia?: Asset<"WITHOUT_UNRESOLVABLE_LINKS"> } = $props()
+  let { item, small, first, visibleMedia = $bindable() }: { item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">, small?: boolean, visibleMedia?: Asset<"WITHOUT_UNRESOLVABLE_LINKS">, first?: boolean } = $props()
 
   let visible = $state(false)
   let hrElement: HTMLElement = $state(null)
@@ -23,7 +23,7 @@
           if (visible) {
             visibleMedia = item.fields.media
           } else {
-            visibleMedia = null
+            visibleMedia = first ? item.fields.media : null
           }
         })
       },
@@ -58,18 +58,12 @@
   </div>
   {/if}
 
-  {#if item.fields.media && item.fields.mediaAlignment !== 'Fixed'}
+  {#if item.fields.media}
   <figure class="padded col col--6of12 col--tablet--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
-    <Media media={item.fields.media} />
+    <Media media={item.fields.media} ar={1} />
   </figure>
   {/if}
 </div>
-
-{#if item.fields.media && item.fields.mediaAlignment === 'Fixed'}
-<!-- <figure class="padded text__media text__media--{item.fields.mediaAlignment}" class:visible>
-  <Media media={item.fields.media} ar={1} />
-</figure> -->
-{/if}
 
 
 
@@ -81,8 +75,8 @@
       padding: $s-2;
     }
 
-    h3 {
-      margin-bottom: $s6;
+    .text__body {
+      margin: $s6 0;
     }
 
     h3 {
@@ -108,7 +102,28 @@
         padding: 0;
 
         @media (min-width: $tablet_portrait) {
-          min-height: 100lvh;
+          .text__body {
+            min-height: calc(100lvh - ($s6 * 2));
+          }
+
+          
+        }
+
+        h3 {
+          margin-bottom: 0;
+        }
+
+        .text__media--Fixed {
+          @media (min-width: $tablet_portrait) {
+            display: none;
+          }
+        }
+
+        @media (max-width: $tablet_portrait) {
+          .text__body {
+            order: 99;
+            margin-top: 0;
+          }
         }
       }
 
@@ -208,36 +223,6 @@
           width: 1.3em;
         }
       }
-    }
-  }
-
-  .text__media--Fixed {
-    @media (min-width: $tablet_portrait) {
-      position: absolute;
-      z-index: -2;
-      top: 0;
-      right: 0;
-      height: 100lvh;
-      width: 50%;
-      
-      opacity: 0;
-      transition: opacity 0.666s;
-
-      &.visible {
-        opacity: 1;
-      }
-
-      :global(picture),
-      :global(img),
-      :global(video) {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-    }
-
-    @media (max-width: $tablet_portrait) {
-      order: -1;
     }
   }
 </style>

@@ -35,7 +35,7 @@
     {#each list.fields.items as item, index}
     <div class="list__item">
       {#if isTypeText(item)}
-      <Text {item} bind:visibleMedia={visibleMedia[index]} />
+      <Text {item} bind:visibleMedia={visibleMedia[index]} first={index === 0} />
       {:else if isTypeNavigation(item)}
       <Documents {item} {index} />
       {:else if isTypeTeamMember(item)}
@@ -98,6 +98,14 @@
 
           + .list__item {
             margin-top: -100svh;
+
+            @media (max-width: $tablet_portrait) {
+              margin-top: 0;
+            }
+          }
+
+          @media (max-width: $tablet_portrait) {
+            display: none;
           }
         }
       }
