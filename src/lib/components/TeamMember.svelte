@@ -37,6 +37,10 @@
     max-width: 1080px;
     margin: 0 auto;
 
+    @media (max-width: $tablet_landscape) {
+      max-width: 900px;
+    }
+
     @media (max-width: $tablet_portrait) {
       margin-bottom: $s1;
     }
@@ -44,7 +48,7 @@
     h4 {
       margin-bottom: $s1;
 
-      @media (max-width: $tablet_portrait) {
+      @media (max-width: $tablet_landscape) {
         margin-bottom: $s0;
       }
     }
@@ -52,7 +56,7 @@
     h6 {
       margin-bottom: $s1;
 
-      @media (max-width: $tablet_portrait) {
+      @media (max-width: $tablet_landscape) {
         margin-bottom: $s0;
       }
     }
