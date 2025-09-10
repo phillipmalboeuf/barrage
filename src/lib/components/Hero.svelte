@@ -12,7 +12,7 @@
 <div class="hero">
   <figure>
     {#if item.fields.media}
-    <Media media={item.fields.media} />
+    <Media media={item.fields.media} mobileMedia={item.fields.mobileMedia} />
     {/if}
   </figure>
   <div class="hero__content padded {item.fields.alignment === 'Left' ? 'left' : 'flex--middle'}">

@@ -49,6 +49,7 @@ export interface TypeHeroFields {
     id?: EntryFieldTypes.Symbol;
     body?: EntryFieldTypes.RichText;
     media?: EntryFieldTypes.AssetLink;
+    mobileMedia?: EntryFieldTypes.AssetLink;
     alignment?: EntryFieldTypes.Symbol<"Center" | "Left">;
 }
 
