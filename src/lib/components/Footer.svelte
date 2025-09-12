@@ -124,6 +124,10 @@
           font-style: italic;
           transform: translateX(6px);
         }
+
+        @media (max-width: $mobile) {
+          font-size: $s4;
+        }
       }
     }
 

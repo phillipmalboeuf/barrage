@@ -193,7 +193,7 @@
           }
         }
 
-        button:not(.scrolled) {
+        &:not(.open) button:not(.scrolled) {
           span {
             pointer-events: none;
           }
