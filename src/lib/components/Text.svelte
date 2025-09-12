@@ -59,7 +59,7 @@
   {/if}
 
   {#if item.fields.media}
-  <figure class="padded col col--6of12 col--mobile--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
+  <figure class="col col--6of12 col--mobile--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
     <Media media={item.fields.media} />
   </figure>
   {/if}
@@ -91,6 +91,12 @@
         > div {
           max-width: 555px;
           margin: 0 auto;
+        }
+      }
+
+      .text__body {
+        @media (max-width: $tablet_portrait) {
+          padding: $s0;
         }
       }
 
@@ -128,7 +134,13 @@
       }
 
       &.Left {
-        align-items: flex-end;
+        align-items: center;
+
+        @media (min-width: $tablet_portrait) {
+          figure {
+            padding: $s2;
+          }
+        }
         
         h3,
         h6,
@@ -138,7 +150,7 @@
 
         figure {
           order: -1;
-          padding-bottom: 0;
+          // padding-bottom: 0;
         }
       }
 

@@ -43,6 +43,10 @@
 
     @media (max-width: $tablet_portrait) {
       margin-bottom: $s1;
+
+      > div {
+        padding: $s0;
+      }
     }
 
     h4 {

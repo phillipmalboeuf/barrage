@@ -121,6 +121,7 @@ h3,
 .h3 {
 	font-size: $s3;
 	line-height: 1.1;
+	font-weight: 400;
 
 	@media (max-width: $mobile) {
     font-size: $s2;
@@ -132,6 +133,7 @@ h4,
 	font-size: $s2;
 	font-family: $body_font;
 	line-height: 1.1;
+	font-weight: 400;
 
 	em {
 		font-family: $heading_font;
@@ -196,6 +198,7 @@ p {
 	.mid &,
 	blockquote & {
 		font-size: $s2;
+		font-weight: 400;
 
 		@media (max-width: $mobile) {
 			// font-size: calc($s1 - 2px);
