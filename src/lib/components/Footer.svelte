@@ -81,7 +81,7 @@
 <style lang="scss">
   footer {
     position: relative;
-    z-index: 50;
+    // z-index: 50;
     min-height: 100lvh;
     padding-top: 120px;
     background-color: $blanc;

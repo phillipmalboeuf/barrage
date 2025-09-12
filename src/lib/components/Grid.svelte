@@ -100,7 +100,7 @@
               }
 
               @media (max-width: $tablet_portrait) {
-                font-size: 60px;
+                font-size: 80px;
               }
             }
           }
