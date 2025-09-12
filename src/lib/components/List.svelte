@@ -87,13 +87,15 @@
 
           :global(picture),
           :global(img) {
-            padding: $s0;
+            margin: $s0;
             position: absolute;
-            top: 0;
+            top: 50%;
             left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            width: calc(100% - ($s0));
+            // height: 100%;
+            // object-fit: contain;
+            transform: translateY(-50%);
+            border-radius: calc($radius / 2);
           }
 
           + .list__item {

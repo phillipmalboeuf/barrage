@@ -11,11 +11,11 @@
 
 <div class="member flex flex--thick_gapped">
   {#if item.fields.portrait}
-  <figure class="col col--4of12 col--tablet--12of12 member__media">
+  <figure class="col col--4of12 col--mobile--12of12 member__media">
     <Media media={item.fields.portrait} ar={1} />
   </figure>
   {/if}
-  <div class="col col--8of12 col--tablet--12of12">
+  <div class="col col--8of12 col--mobile--12of12">
     {#if item.fields.name}
     <h4>{item.fields.name}{#if item.fields.qualifications}<br>{item.fields.qualifications}{/if}</h4>
     {/if}

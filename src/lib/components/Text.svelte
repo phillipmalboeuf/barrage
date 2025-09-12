@@ -51,7 +51,7 @@
   {/if}
   {/if}
   {#if item.fields.body}
-  <div class="text__body col col--tablet--12of12" class:col--6of12={item.fields.media} class:col--12of12={!item.fields.media}>
+  <div class="text__body col col--mobile--12of12" class:col--6of12={item.fields.media} class:col--12of12={!item.fields.media}>
     <div class="flex flex--column flex--gapped">
       <Rich body={item.fields.body} />
     </div>
@@ -59,8 +59,8 @@
   {/if}
 
   {#if item.fields.media}
-  <figure class="padded col col--6of12 col--tablet--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
-    <Media media={item.fields.media} ar={1} />
+  <figure class="padded col col--6of12 col--mobile--12of12 text__media text__media--{item.fields.mediaAlignment}" class:visible>
+    <Media media={item.fields.media} />
   </figure>
   {/if}
 </div>
