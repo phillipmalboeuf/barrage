@@ -55,6 +55,7 @@
 
     @media (max-width: $tablet_portrait) {
       padding: $s-2;
+      min-height: 0;
     }
 
     h3 {

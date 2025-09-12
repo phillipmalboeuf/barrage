@@ -32,6 +32,13 @@
     min-height: 100lvh;
     color: $blanc;
 
+    @media (max-width: $tablet_portrait) {
+      &:has(> .left) {
+        justify-content: flex-start;
+        padding-top: 25%;
+      }
+    }
+
     &__content {
       padding: $s1;
 

@@ -69,7 +69,7 @@
       </div>
       {/if}
       <div class="flex flex--column flex--gapped contact padded">
-        <h4>Want to become a client, or have some questions?<br>↘</h4>
+        <h4>Want to become a client, or have some questions?<br>↘&#xFE0E;</h4>
         <button type="button" onclick={openContactDialog}>
           Contact <Icon icon="email" label={undefined} />
         </button>
