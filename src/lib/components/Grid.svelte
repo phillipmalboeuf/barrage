@@ -92,6 +92,7 @@
             :global(u) {
               font-size: 10vw;
               font-weight: 300;
+              letter-spacing: -0.05em;
               text-decoration: none;
               line-height: 0;
 

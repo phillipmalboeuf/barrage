@@ -26,7 +26,7 @@
   </div>
   {/if}
   
-  <div class="col col--8of12 col--tablet--12of12 navs">
+  <div class="col col--8of12 col--landscape--7of12 col--tablet--12of12 navs">
     <nav class="flex flex--gapped flex--column">
       <div class="col col--12of12 main-nav">
         <div class="flex flex--column flex--gapped">
@@ -53,7 +53,7 @@
     </nav>
   </div>
   
-  <div class="col col--4of12 col--tablet--12of12">
+  <div class="col col--4of12 col--landscape--5of12 col--tablet--12of12">
     <div class="flex flex--column flex--gapped forms">
       {#if form}
       <div class="flex flex--column flex--gapped form padded">
@@ -103,6 +103,10 @@
       right: 0;
       padding: $s1;
       background-color: $blanc;
+
+      @media (max-width: $tablet_landscape) {
+        display: none;
+      }
     }
 
     .main-nav {
