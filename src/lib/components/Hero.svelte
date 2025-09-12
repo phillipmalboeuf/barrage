@@ -53,7 +53,7 @@
       
       &.flex--middle {
         text-align: center;
-        max-width: 1000px;
+        max-width: 1150px;
         font-style: italic;
 
         @media (max-width: $tablet_landscape) {

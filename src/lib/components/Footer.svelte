@@ -62,7 +62,7 @@
           <Inputs {form} />
           <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
             <input type="checkbox" name="accept" id="input-newsletter-accept" required />
-            <span>I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a></span>
+            <span>{#if getLocale() === 'fr'}J’accepte la <a href="/privacy"><u>politique de confidentialité</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a>{/if}</span>
           </label>
           <button type="submit">Send <span>→</span></button>
         </form>
