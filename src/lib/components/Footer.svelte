@@ -64,12 +64,12 @@
             <input type="checkbox" name="accept" id="input-newsletter-accept" required />
             <span>{#if getLocale() === 'fr'}J’accepte la <a href="/privacy"><u>politique de confidentialité</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a>{/if}</span>
           </label>
-          <button type="submit">Send <span>→</span></button>
+          <button type="submit">{#if getLocale() === 'fr'}Envoyer{:else}Send{/if} <span>→</span></button>
         </form>
       </div>
       {/if}
       <div class="flex flex--column flex--gapped contact padded">
-        <h4>Want to become a client, or have some questions?<br>↘&#xFE0E;</h4>
+        <h4>{#if getLocale() === 'fr'}Vous souhaitez devenir client ou vous avez des questions?{:else}Want to become a client, or have some questions?{/if}<br>↘&#xFE0E;</h4>
         <button type="button" onclick={openContactDialog}>
           Contact <Icon icon="email" label={undefined} />
         </button>
