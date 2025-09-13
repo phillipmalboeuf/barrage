@@ -27,7 +27,7 @@
       {:else if isTypeLink(item)}
       <a href={item.fields.destination} class="grid__item__link flex flex--column flex--spaced flex--gapped padded">
         <h6>{@html item.fields.label.replace('&', '<br>&')}</h6>
-        <h3>{item.fields.title}</h3>
+        <h3>{item.fields.title} <span>↘&#xFE0E;</span></h3>
       </a>
       {/if}
     </div>
@@ -126,6 +126,25 @@
           h3 {
             margin-bottom: 0;
             font-family: $body_font;
+
+            span {
+              opacity: 0;
+              display: inline-block;
+              transform: translateY(10px) rotate(-90deg);
+              transition: opacity 333ms, transform 333ms;
+            }
+          }
+
+          &:hover,
+          &:focus-visible {
+            h3 {
+              font-style: italic;
+
+              span {
+                opacity: 1;
+                transform: translateY(0) rotate(-90deg);
+              }
+            }
           }
         }
       }
