@@ -106,6 +106,12 @@
             }
           }
 
+          :global(p) {
+            @media (max-width: $mobile) {
+              font-size: calc($s0 - 2px);
+            }
+          }
+
           :global(h6) {
             text-align: right;
           }
