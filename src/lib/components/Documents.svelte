@@ -71,7 +71,7 @@
 
           @media (max-width: $mobile) {
             padding: $s-3;
-            width: 80px;
+            width: 120px;
             aspect-ratio: 1 / 1.3;
             font-size: $s-2;
             // hyphens: auto;
