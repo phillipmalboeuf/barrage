@@ -59,7 +59,7 @@
     }
 
     h3 {
-      margin-bottom: $s4;
+      margin-bottom: calc($s8 * 1.5);
       position: sticky;
       top: 70px;
       z-index: 1;

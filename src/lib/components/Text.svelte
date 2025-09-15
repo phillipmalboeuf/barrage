@@ -79,6 +79,7 @@
       position: sticky;
       top: 70px;
       z-index: 1;
+      margin-bottom: calc($s8 * 1.5);
 
       @media (max-width: $tablet_portrait) {
         order: -2;
