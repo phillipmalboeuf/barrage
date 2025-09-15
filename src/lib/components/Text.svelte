@@ -246,5 +246,17 @@
         }
       }
     }
+
+    &#returns-comparison {
+      :global(table) {
+        :global(td:first-child p) {
+          font-weight: 400;
+
+          @media (max-width: $tablet_portrait) {
+            font-size: calc($s0 - 2px);
+          }
+        }
+      }
+    }
   }
 </style>
