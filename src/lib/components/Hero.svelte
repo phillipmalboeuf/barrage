@@ -47,7 +47,7 @@
       }
 
       :global(p) {
-        font-size: $s1;
+        font-size: calc($s1 - 2px);
         font-weight: 400;
       }
       
@@ -79,7 +79,7 @@
         }
 
         > div {
-          max-width: 520px;
+          max-width: 420px;
           margin: 0 auto;
         }
       }
