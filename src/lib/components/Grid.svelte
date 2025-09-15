@@ -47,13 +47,14 @@
 
     > h3 {
       margin-bottom: calc($s6 + ($s8 * 1.5));
+      margin-left: $s-1;
       position: sticky;
-      top: 70px;
+      top: 64px;
       z-index: 1;
 
       @media (max-width: $tablet_portrait) {
         order: -2;
-        top: 40px;
+        top: 38px;
       }
     }
 

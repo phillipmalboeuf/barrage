@@ -24,6 +24,7 @@
   // let lastScrollY = 0
   let menuOpen = $state(false)
   let scrolled = $state(false)
+  let atBottom = $state(false)
 
   $effect(() => {
     if (menuOpen && scrollY < 45) {
@@ -34,8 +35,8 @@
 
   function onScroll() {
     // lastScrollY = scrollY < 0 ? 0 : scrollY
-    console.log(window.scrollY)
     scrolled = window.scrollY > 90
+    atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 90
   }
 
   onNavigate(() => {
@@ -62,7 +63,7 @@
     {/each}
   </nav>
   <nav class="menu-nav padded" class:open={menuOpen} class:dark={headerState.dark}>
-    <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen} class:scrolled>
+    <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen} class:scrolled class:at-bottom={atBottom}>
       <span>{#if menuOpen}Close{:else}Menu{/if}</span>
       {#if menuOpen}
         <Icon icon="close" label={undefined} />
@@ -160,6 +161,7 @@
 
       &.logo-nav {
         padding-bottom: $s-2;
+        margin-left: $s-1;
         z-index: 102;
 
         &.open {
@@ -200,10 +202,19 @@
           }
         }
 
+        button {
+          transition: opacity 333ms;
+        }
+
         &:not(.open) button:not(.scrolled) {
           span {
             pointer-events: none;
           }
+        }
+
+        &:not(.open) button.at-bottom {
+          opacity: 0;
+          pointer-events: none;
         }
 
         @media (max-width: $tablet_portrait) {

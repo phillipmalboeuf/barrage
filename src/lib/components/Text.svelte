@@ -69,7 +69,7 @@
 
 <style lang="scss">
   .text {
-    padding: $s1;
+    padding: $s1 $s0;
 
     @media (max-width: $tablet_portrait) {
       padding: $s-2;
@@ -77,13 +77,14 @@
 
     h3 {
       position: sticky;
-      top: 70px;
+      top: 64px;
       z-index: 1;
       margin-bottom: calc($s8 * 1.5);
+      margin-left: $s-1;
 
       @media (max-width: $tablet_portrait) {
         order: -2;
-        top: 40px;
+        top: 38px;
       }
     }
 
