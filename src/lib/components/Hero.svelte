@@ -53,15 +53,15 @@
       
       &.flex--middle {
         text-align: center;
-        max-width: 1150px;
+        // max-width: 1150px;
         font-style: italic;
 
         @media (max-width: $tablet_landscape) {
-          max-width: 700px;
+          // max-width: 700px;
         }
 
         @media (max-width: $mobile) {
-          max-width: 420px;
+          // max-width: 420px;
         }
 
         :global(strong) {
