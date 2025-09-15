@@ -45,9 +45,9 @@
         </div>
       </div>
       
-      <div class="col col--12of12 flex flex--gapped">
-      {#each navigations.footer.fields.links as link}
-        <a href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+      <div class="col col--12of12 flex flex--gapped footer-nav">
+      {#each navigations.footer.fields.links as link, index}
+        <a class:first={index === 0} href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
       {/each}
       </div>
     </nav>
@@ -88,7 +88,7 @@
     align-items: stretch;
 
     nav {
-      max-width: 524px;
+      // max-width: 524px;
       min-height: 100%;
 
       @media (max-width: $tablet_portrait) {
@@ -106,6 +106,14 @@
 
       @media (max-width: $tablet_landscape) {
         display: none;
+      }
+    }
+
+    .footer-nav {
+      a {
+        &:first-child {
+          width: 100%;
+        }
       }
     }
 
