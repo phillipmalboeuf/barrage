@@ -173,6 +173,13 @@
 
         @media (max-width: $tablet_portrait) {
           :global(svg) {
+            height: 25px;
+            width: auto;
+          }
+        }
+
+        @media (max-width: $mobile) {
+          :global(svg) {
             height: 22px;
             width: auto;
           }

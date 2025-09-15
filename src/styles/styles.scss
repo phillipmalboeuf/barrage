@@ -123,6 +123,10 @@ h3,
 	line-height: 1.1;
 	font-weight: 400;
 
+	@media (max-width: $tablet_portrait) {
+    font-size: calc($s3 - 4px);
+  }
+
 	@media (max-width: $mobile) {
     font-size: $s2;
   }
