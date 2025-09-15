@@ -58,6 +58,10 @@
         padding: $s0;
         border-radius: $radius;
 
+        @media (max-width: $tablet_landscape) {
+          padding: calc($s-1);
+        }
+
         &::placeholder {
           opacity: 0;
         }

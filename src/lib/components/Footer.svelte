@@ -216,6 +216,10 @@
         button {
           margin-top: $s1;
           align-self: flex-end;
+
+          @media (max-width: $tablet_landscape) {
+            margin-top: $s-1;
+          }
         }
       }
     }
