@@ -96,6 +96,10 @@
       }
 
       .text__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
         @media (max-width: $tablet_portrait) {
           padding: $s0;
         }
@@ -105,7 +109,7 @@
         padding: 0;
 
         .text__body {
-          margin: $s6 0;
+          margin: calc($s6) 0 $s6;
         }
 
         @media (min-width: $tablet_portrait) {
