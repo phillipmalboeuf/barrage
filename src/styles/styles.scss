@@ -179,6 +179,10 @@ h6,
 	// text-transform: uppercase;
 	line-height: 1.33333333;
 
+	@media (max-width: $tablet_landscape) {
+    font-size: calc($s0 - 2px);
+  }
+
 	@media (max-width: $tablet_portrait) {
     font-size: $s-1;
   }
