@@ -43,7 +43,7 @@
   button.button--fixed {
     position: fixed;
     bottom: $s2;
-    right: $s2;
+    right: calc($s2 + $s-1);
     z-index: 47;
 
     @media (max-width: $tablet_portrait) {
