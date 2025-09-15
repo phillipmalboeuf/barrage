@@ -93,7 +93,7 @@ h1,
 	// }
 
 	@media (max-width: $mobile) {
-    font-size: $s4;
+    font-size: calc($s4 - 2px);
 		line-height: 1.1;
   }
 }
