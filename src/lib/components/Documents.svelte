@@ -50,7 +50,7 @@
       em {
         font-style: normal;
       }
-      @media (max-width: $mobile) {
+      @media (max-width: $tablet_portrait) {
         order: -1;
         margin-bottom: $s0;
         margin-left: auto;
