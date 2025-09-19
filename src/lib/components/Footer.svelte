@@ -9,6 +9,7 @@
   
   import { openContactDialog } from '$lib/stores/contact.svelte'
   import ContactDialog from './ContactDialog.svelte';
+  import { localizeHref } from '$lib/paraglide/runtime';
 
   let { navigations, form, top=false }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -31,7 +32,7 @@
       <div class="col col--12of12 main-nav">
         <div class="flex flex--column flex--gapped">
         {#each navigations.main.fields.links as link}
-          <a class="h2" href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+          <a class="h2" href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
         {/each}
         </div>
       </div>
@@ -48,7 +49,7 @@
       <div class="col col--12of12 footer-nav">
         <div class="flex flex--tight_gapped">
         {#each navigations.footer.fields.links as link, index}
-          <a class:first={index === 0} href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+          <a class:first={index === 0} href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
         {/each}
         </div>
       </div>
@@ -64,7 +65,7 @@
           <Inputs {form} />
           <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
             <input type="checkbox" name="accept" id="input-newsletter-accept" required />
-            <span>{#if getLocale() === 'fr'}J’accepte la <a href="/privacy"><u>politique de confidentialité</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a>{/if}</span>
+            <span>{#if getLocale() === 'fr'}J'accepte la <a href={localizeHref("/privacy")}><u>politique de confidentialité</u></a> de Barrage Capital. {:else}I agree to Barrage Capital's <a href={localizeHref("/privacy")}><u>Privacy Policy.</u></a>{/if}</span>
           </label>
           <button type="submit">{#if getLocale() === 'fr'}Envoyer{:else}Send{/if} <span>→</span></button>
         </form>

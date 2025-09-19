@@ -2,6 +2,7 @@
   import { isTypeNavigation, isTypeText, type TypeNavigationSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
   import { onMount } from 'svelte'
+  import { localizeHref } from '$lib/paraglide/runtime'
 
   let { item, index }: { item: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">, index: number } = $props()
 </script>
@@ -12,7 +13,7 @@
   <div class="links flex flex--gapped">
     {#each item.fields.links as link}
     <div class="link">
-      <a class="flex flex--column flex--spaced" href={link.fields.asset ? link.fields.asset.fields.file.url : link.fields.destination} target={(link.fields.external || link.fields.asset) ? '_blank' : undefined} download={link.fields.asset ? link.fields.asset.fields.file.fileName : undefined}>
+      <a class="flex flex--column flex--spaced" href={link.fields.asset ? link.fields.asset.fields.file.url : (link.fields.external ? link.fields.destination : localizeHref(link.fields.destination))} target={(link.fields.external || link.fields.asset) ? '_blank' : undefined} download={link.fields.asset ? link.fields.asset.fields.file.fileName : undefined}>
         {#if link.fields.asset}
         <svg width="33%" viewBox="0 0 60 73">
         <path d="M60 51.9229H39.2305V72.6924H0V0H60V51.9229ZM7.04785 7.97852V19.6152H8.80371V15.5244H11.1895C12.091 15.5244 12.8399 15.3598 13.4346 15.0303C14.0329 14.697 14.48 14.2458 14.7754 13.6777C15.0746 13.1058 15.2236 12.4619 15.2236 11.7461C15.2236 11.034 15.0767 10.3934 14.7812 9.8252C14.4858 9.25328 14.04 8.80315 13.4453 8.47363C12.8506 8.14411 12.1006 7.97852 11.1953 7.97852H7.04785ZM17.2822 7.97852V19.6152H21.0488C22.2306 19.6152 23.2389 19.3819 24.0723 18.916C24.9054 18.4463 25.5421 17.7763 25.9814 16.9053C26.4246 16.0341 26.6455 14.9923 26.6455 13.7803C26.6455 12.5719 26.4257 11.5355 25.9863 10.6719C25.5508 9.80473 24.9244 9.13978 24.1064 8.67773C23.2883 8.21187 22.3089 7.97856 21.1689 7.97852H17.2822ZM28.8291 7.97852V19.6152H30.585V14.541H35.5283V13.0361H30.585V9.49023H36.0449V7.97852H28.8291ZM21.0605 9.5127C21.909 9.5127 22.6194 9.67827 23.1914 10.0078C23.7632 10.3373 24.1936 10.8198 24.4814 11.4561C24.7731 12.0924 24.9189 12.8674 24.9189 13.7803C24.9189 14.7006 24.7731 15.481 24.4814 16.1211C24.1898 16.7574 23.7501 17.2439 23.1631 17.5811C22.5761 17.9143 21.8393 18.081 20.9531 18.0811H19.0381V9.5127H21.0605ZM11.0078 9.48438C11.5911 9.48438 12.0609 9.58129 12.417 9.77441C12.7767 9.96754 13.0404 10.2344 13.207 10.5752C13.3737 10.9161 13.457 11.3067 13.457 11.7461C13.457 12.1853 13.3736 12.5773 13.207 12.9219C13.0404 13.2666 12.7789 13.5395 12.4229 13.7402C12.0669 13.9372 11.603 14.0361 11.0312 14.0361H8.80371V9.48438H11.0078Z" fill="currentColor"/>

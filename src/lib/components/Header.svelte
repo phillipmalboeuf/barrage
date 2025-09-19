@@ -10,6 +10,7 @@
   import Rich from './Rich.svelte'
   
   import { headerState } from '$lib/stores/header.svelte'
+  import { localizeHref } from '$lib/paraglide/runtime'
 
   let { navigations, form }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -53,13 +54,13 @@
   </aside>
   {/if}
   <nav class="logo-nav padded" class:open={menuOpen} bind:offsetHeight={headerHeight} class:dark={headerState.dark} bind:this={headerState.element}>
-    <a href="/">
+    <a href={localizeHref("/")}>
       <Icon icon="logo" label="Barrage Capital" />
     </a>
   </nav>
   <nav class="main-nav padded flex flex--gapped flex--middle" class:dark={headerState.dark}>
     {#each navigations.main.fields.links as link}
-      <a href={link.fields.destination} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+      <a href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
     {/each}
   </nav>
   <nav class="menu-nav padded" class:open={menuOpen} class:dark={headerState.dark}>

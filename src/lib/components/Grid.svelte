@@ -7,6 +7,7 @@
   import Media from './Media.svelte'
   import Text from './Text.svelte'
   import Documents from './Documents.svelte'
+  import { localizeHref } from '$lib/paraglide/runtime'
   // import Parallax from './Parallax.svelte'
 
   let { grid }: { grid: Entry<TypeGridSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> } = $props()
@@ -25,7 +26,7 @@
       {#if isTypeText(item)}
       <Text {item} small />
       {:else if isTypeLink(item)}
-      <a href={item.fields.destination} class="grid__item__link flex flex--column flex--spaced flex--gapped padded">
+      <a href={item.fields.external ? item.fields.destination : localizeHref(item.fields.destination)} target={item.fields.external ? '_blank' : undefined} class="grid__item__link flex flex--column flex--spaced flex--gapped padded">
         <h6>{@html item.fields.label.replace('&', '<br>&')}</h6>
         <h3>{item.fields.title} <span>↘&#xFE0E;</span></h3>
       </a>

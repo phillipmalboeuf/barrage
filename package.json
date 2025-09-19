@@ -23,7 +23,7 @@
 		"vite": "^6.2.6"
 	},
 	"dependencies": {
-		"@inlang/paraglide-js": "^2.0.0",
+		"@inlang/paraglide-js": "^2.3.2",
 		"contentful": "^11.7.2",
 		"embla-carousel-autoplay": "^8.6.0",
 		"embla-carousel-svelte": "^8.6.0",
