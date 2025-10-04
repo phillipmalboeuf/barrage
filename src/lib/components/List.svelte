@@ -51,7 +51,7 @@
 <style lang="scss">
   .list {
     padding: $s1;
-    min-height: 100lvh;
+    min-height: 100svh;
 
     @media (max-width: $tablet_portrait) {
       padding: $s-2;

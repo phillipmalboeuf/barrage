@@ -115,7 +115,7 @@
 
         @media (min-width: $tablet_portrait) {
           .text__body {
-            min-height: calc(100lvh - ($s6 * 2));
+            min-height: calc(100svh - ($s6 * 2));
           }
 
           

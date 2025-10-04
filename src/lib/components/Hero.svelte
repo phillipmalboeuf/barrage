@@ -29,7 +29,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100lvh;
+    min-height: 100svh;
     color: $blanc;
 
     @media (max-width: $tablet_portrait) {

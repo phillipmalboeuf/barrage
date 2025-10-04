@@ -62,7 +62,7 @@
     width: fit-content;
     max-width: 360px;
     height: auto;
-    max-height: calc(100vh - ($s1 * 2) - 120px);
+    max-height: calc(100svh - ($s1 * 2) - 120px);
     overflow-y: auto;
     z-index: 105;
     border-radius: $radius;
@@ -74,8 +74,8 @@
       left: 0;
       width: 100%;
       max-width: 100%;
-      max-height: calc(100lvh);
-      height: 100lvh;
+      max-height: 100svh;
+      height: 100svh;
       border-radius: 0;
 
       :global(> section) {

@@ -85,7 +85,7 @@
   footer {
     position: relative;
     // z-index: 50;
-    min-height: 100lvh;
+    min-height: 100svh;
     padding-top: 120px;
     background-color: $blanc;
     align-items: stretch;
