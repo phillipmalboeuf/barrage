@@ -9,6 +9,7 @@ html {
 	font-size: $base;
 	line-height: 1.25;
 
+	font-feature-settings: 'liga' on;
 	font-optical-sizing: auto;
 	-webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
