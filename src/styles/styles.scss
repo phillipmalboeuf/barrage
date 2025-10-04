@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6,
 	font-family: $heading_font;
 	// text-transform: uppercase;
 	font-weight: 350;
-	letter-spacing: -0.02em;
+	// letter-spacing: -0.02em;
 	line-height: 0.9;
 	white-space: pre-line;
 
@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6,
 	&.h--alt {
 		font-family: $body_font;
 		font-weight: 350;
-		letter-spacing: -0.01em;
+		// letter-spacing: -0.01em;
 	}
 
 	@media (max-width: $mobile) {
