@@ -43,7 +43,7 @@
       padding: $s1;
 
       @media (max-width: $tablet_portrait) {
-        padding: $s-2;
+        padding: $s-2 calc($s-2 + $s-1);
       }
 
       :global(p) {

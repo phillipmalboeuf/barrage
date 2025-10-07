@@ -84,7 +84,7 @@
 
       @media (max-width: $tablet_portrait) {
         order: -2;
-        top: 38px;
+        top: 48px;
       }
     }
 

@@ -158,6 +158,10 @@
       &:not(.main-nav) {
         position: sticky;
         top: 0;
+
+        @media (max-width: $tablet_portrait) {
+          top: $s-2;
+        }
       }
 
       &.logo-nav {
@@ -175,6 +179,8 @@
         }
 
         @media (max-width: $tablet_portrait) {
+          margin-top: $s-1;
+
           :global(svg) {
             height: 25px;
             width: auto;
@@ -190,6 +196,11 @@
       }
 
       &.menu-nav {
+        @media (max-width: $tablet_portrait) {
+          margin-top: $s-2;
+          margin-right: $s-1;
+        }
+
         &.open {
           z-index: 100;
 
