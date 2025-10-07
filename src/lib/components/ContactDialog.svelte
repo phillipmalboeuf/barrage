@@ -7,12 +7,13 @@
   import Icon from './Icon.svelte'
 
   import { contactState, openContactDialog, closeContactDialog, openNewsletterDialog, closeNewsletterDialog } from '$lib/stores/contact.svelte'
+  import { getLocale, localizeHref } from '$lib/paraglide/runtime';
 
   let { type='contact' }: { type?: 'contact' | 'newsletter' } = $props()
 </script>
 
 {#if type === 'contact'}
-{#await preloadData('/contact') then data}
+{#await preloadData(localizeHref('/contact')) then data}
 <button class="button--fixed" type="button" aria-expanded={contactState.visible} aria-controls="contact-dialog" onclick={openContactDialog} transition:fly={{ y: '100%', opacity: 1, duration: 666 }}>Contact <Icon icon="email" label={undefined} /></button>
 
 {#if contactState.visible}
@@ -25,12 +26,12 @@
 {/if}
 {/await}
 {:else if type === 'newsletter'}
-{#await preloadData('/newsletter') then data}
-<button class="flex flex--middle flex--spaced button--grey button--large" type="button" aria-expanded={contactState.newsletter} aria-controls="newsletter-dialog" onclick={openNewsletterDialog} transition:fly={{ y: '100%', opacity: 1, duration: 666 }}><span>Sign up to our newsletter</span> <Icon icon="newsletter" label={undefined} /></button>
+{#await preloadData(localizeHref('/newsletter')) then data}
+<button class="flex flex--middle flex--spaced button--grey button--large" type="button" aria-expanded={contactState.newsletter} aria-controls="newsletter-dialog" onclick={openNewsletterDialog} transition:fly={{ y: '100%', opacity: 1, duration: 666 }}><span>{#if getLocale() === 'fr'}S'abonner à notre infolettre{:else}Sign up to our newsletter{/if}</span> <Icon icon="newsletter" label={undefined} /></button>
 
 {#if contactState.newsletter}
 <dialog class="flex flex--column" open onclose={closeNewsletterDialog} transition:fly={{ y: '110%', opacity: 1, duration: 666 }} id="newsletter-dialog">
-  <h5 class="flex flex--middle flex--gapped flex--spaced bleu">Newsletter form <button class="button--none" aria-controls="newsletter-dialog" aria-expanded={contactState.newsletter ? 'true' : 'false'} onclick={() => contactState.newsletter = !contactState.newsletter}><Icon icon="close" label="Close" /></button></h5>
+  <h5 class="flex flex--middle flex--gapped flex--spaced bleu">{#if getLocale() === 'fr'}Infolettre{:else}Newsletter form{/if} <button class="button--none" aria-controls="newsletter-dialog" aria-expanded={contactState.newsletter ? 'true' : 'false'} onclick={() => contactState.newsletter = !contactState.newsletter}><Icon icon="close" label="Close" /></button></h5>
   {#if data.type === 'loaded'}
   <NewsletterPage data={data.data as any} />
   {/if}

@@ -6,6 +6,7 @@
 
   import Rich from '$lib/components/Rich.svelte'
   import Inputs from '$lib/components/Inputs.svelte'
+  import { getLocale } from '$lib/paraglide/runtime'
 
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
@@ -68,11 +69,11 @@
         }
         error = null
         selected = null
-      }}><span>←</span> Back</button>
+      }}><span>←</span> {#if getLocale() === 'fr'}Retour{:else}Back{/if}</button>
       {:else}
       <span></span>
       {/if}
-      <button type="submit" disabled={isTypeForm(active) ? !isValid : !selected}>{isTypeForm(active) ? 'Send' : 'Next'} <span>→</span></button>
+      <button type="submit" disabled={isTypeForm(active) ? !isValid : !selected}>{isTypeForm(active) ? getLocale() === 'fr' ? 'Envoyer' : 'Send' : getLocale() === 'fr' ? 'Suivant' : 'Next'} <span>→</span></button>
     </div>
   </form>
 </section>

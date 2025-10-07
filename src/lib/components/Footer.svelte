@@ -22,7 +22,7 @@
   {#if top}
   <div class="top">
     <button class="button--none" onclick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-      Top <Icon icon="top" label={undefined} />
+      {#if getLocale() === 'fr'}Haut{:else}Top{/if} <Icon icon="top" label={undefined} />
     </button>
   </div>
   {/if}

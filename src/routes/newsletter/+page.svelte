@@ -8,6 +8,7 @@
   import Inputs from '$lib/components/Inputs.svelte'
 
   import type { PageData } from './$types'
+  import { getLocale } from '$lib/paraglide/runtime';
   let { data }: { data: PageData } = $props()
 
   let error = $state<RichTextDocument | null>(null)
@@ -26,7 +27,7 @@
 
     <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
       <input type="checkbox" name="accept" id="input-newsletter-accept" required />
-      <span>I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a></span>
+      <span>{#if getLocale() === 'fr'}J'accepte la <a href="/privacy"><u>Politique sur la gestion des renseignements personnels</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/privacy"><u>Privacy Policy.</u></a>{/if}</span>
     </label>
 
     {#if error}

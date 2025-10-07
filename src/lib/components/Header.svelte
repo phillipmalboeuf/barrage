@@ -10,7 +10,7 @@
   import Rich from './Rich.svelte'
   
   import { headerState } from '$lib/stores/header.svelte'
-  import { localizeHref } from '$lib/paraglide/runtime'
+  import { getLocale, localizeHref } from '$lib/paraglide/runtime'
 
   let { navigations, form }: {
     navigations: { [key: string]: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS"> }
@@ -65,7 +65,7 @@
   </nav>
   <nav class="menu-nav padded" class:open={menuOpen} class:dark={headerState.dark}>
     <button class="button--none" aria-controls="menu" aria-expanded={menuOpen ? 'true' : 'false'} onclick={() => menuOpen = !menuOpen} class:scrolled class:at-bottom={atBottom}>
-      <span>{#if menuOpen}Close{:else}Menu{/if}</span>
+      <span>{#if menuOpen}{#if getLocale() === 'fr'}Fermer{:else}Close{/if}{:else}Menu{/if}</span>
       {#if menuOpen}
         <Icon icon="close" label={undefined} />
       {:else}
