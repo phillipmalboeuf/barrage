@@ -118,6 +118,7 @@
 
           :global(h6) {
             text-align: right;
+            font-size: calc($s1 - 2px);
           }
 
           :global(h6 + div) {

@@ -36,7 +36,7 @@
   {/if}
 
   {#if item.fields.title}
-  <h5><em>{item.fields.title}</em></h5>
+  <h6><em>{item.fields.title}</em></h6>
   {/if}
 </div>
 
@@ -47,14 +47,17 @@
     padding: $s1;
     border-radius: $radius;
 
-    h5 {
+    h6 {
+      font-size: calc($s1 - 2px);
+      
       em {
         font-style: normal;
       }
       @media (max-width: $tablet_portrait) {
         order: -1;
+        width: 100%;
         margin-bottom: $s0;
-        margin-left: auto;
+        text-align: right;
       }
     }
 
