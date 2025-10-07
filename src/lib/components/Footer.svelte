@@ -28,9 +28,9 @@
   {/if}
   
   <div class="col col--8of12 col--landscape--7of12 col--tablet--12of12 navs">
-    <nav class="flex flex--gapped flex--column">
+    <nav class="flex flex--tight_gapped flex--column">
       <div class="col col--12of12 main-nav">
-        <div class="flex flex--column flex--gapped">
+        <div class="flex flex--column flex--tight_gapped">
         {#each navigations.main.fields.links as link}
           <a class="h2" href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
         {/each}
@@ -47,9 +47,12 @@
       </div>
       
       <div class="col col--12of12 footer-nav">
-        <div class="flex flex--tight_gapped">
+        <div class="flex">
         {#each navigations.footer.fields.links as link, index}
-          <a class:first={index === 0} href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+          <a href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+          {#if [0, 2, 4].includes(index)}
+          <div></div>
+          {/if}
         {/each}
         </div>
       </div>
@@ -122,11 +125,19 @@
 
     .footer-nav {
       max-width: 524px;
-
+      
       a {
-        &:first-child {
-          width: 100%;
-        }
+        font-size: $s-1;
+      }
+
+      > .flex {
+        column-gap: $s1;
+      }
+
+      > div > div {
+        display: inline-block;
+        width: 100%;
+        height: $s-2;
       }
     }
 
