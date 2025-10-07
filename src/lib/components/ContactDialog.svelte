@@ -49,7 +49,7 @@
 
     @media (max-width: $tablet_portrait) {
       right: 50%;
-      bottom: $s-2;
+      bottom: $s0;
       transform: translateX(50%);
       z-index: 100;
     }
