@@ -176,12 +176,12 @@
     :global(table) {
       table-layout: fixed;
       width: calc(100% + ($s0 * 2));
+      min-width: calc(100% + ($s-2 * 2));
       border-collapse: separate;
       border-spacing: $s0;
       margin: 0 calc($s0 * -1) calc($s0 * -1);
 
       @media (max-width: $mobile) {
-        width: calc(100% + ($s-2 * 2));
         border-spacing: $s-2;
         margin: 0 calc($s-2 * -1) calc($s-2 * -1);
         display: block;
