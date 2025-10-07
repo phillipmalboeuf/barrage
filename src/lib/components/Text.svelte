@@ -180,7 +180,7 @@
       border-spacing: $s0;
       margin: 0 calc($s0 * -1) calc($s0 * -1);
 
-      @media (max-width: $tablet_landscape) {
+      @media (max-width: $mobile) {
         width: calc(100% + ($s-2 * 2));
         border-spacing: $s-2;
         margin: 0 calc($s-2 * -1) calc($s-2 * -1);
