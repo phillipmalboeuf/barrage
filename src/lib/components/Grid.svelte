@@ -109,6 +109,8 @@
           }
 
           :global(p) {
+            max-width: 46ch;
+
             @media (max-width: $mobile) {
               font-size: calc($s0 - 2px);
             }
