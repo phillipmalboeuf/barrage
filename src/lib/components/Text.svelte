@@ -79,7 +79,7 @@
       position: sticky;
       top: 64px;
       z-index: 1;
-      margin-bottom: calc($s8 * 1.5);
+      margin-bottom: $s4;
       margin-left: $s-1;
 
       @media (max-width: $tablet_portrait) {

@@ -47,7 +47,7 @@
     }
 
     > h3 {
-      margin-bottom: calc($s6 + ($s8 * 1.5));
+      margin-bottom: calc($s0 + $s4);
       margin-left: $s-1;
       position: sticky;
       top: 64px;
