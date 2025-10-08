@@ -70,6 +70,21 @@
         grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: minmax(25vh, auto);
         gap: $s-2;
+
+        &:has(> .grid__item :global(#assets-under-management)) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        > .grid__item:has(:global(#concentrated-numbers-of-holdings)),
+        > .grid__item:has(:global(#fund-profile)) {
+          grid-column-end: 3;
+          grid-column-start: 1;
+        }
+
+        > .grid__item:has(:global(#number-of-clients)) {
+          grid-row-start: 1;
+          grid-column-start: 2;
+        }
       }
 
       .grid__item {
@@ -78,6 +93,10 @@
 
         @media (min-width: $tablet_portrait) {
           grid-area: var(--alignment, auto);
+        }
+
+        @media (min-width: $tablet_portrait) {
+
         }
 
         :global(.text) {
