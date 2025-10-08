@@ -105,6 +105,7 @@
 
             @media (max-width: $tablet_portrait) {
               margin-top: 0;
+              margin-bottom: $s3;
             }
           }
 
