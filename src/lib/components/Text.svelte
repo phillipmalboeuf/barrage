@@ -123,6 +123,10 @@
 
         h3 {
           margin-bottom: 0;
+
+          @media (max-width: $tablet_portrait) {
+            margin-bottom: $s3;
+          }
         }
 
         .text__media--Fixed {
@@ -131,7 +135,7 @@
           }
         }
 
-        @media (max-width: $tablet_portrait) {
+        @media (max-width: $mobile) {
           .text__body {
             order: 99;
             margin-top: 0;
