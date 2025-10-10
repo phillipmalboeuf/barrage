@@ -196,7 +196,7 @@
 
     :global(th),
     :global(td) {
-      padding: $s1;
+      padding: $s-1 $s1;
       // border: 1px solid $gris;
       vertical-align: bottom;
       text-align: right;
@@ -230,14 +230,16 @@
       text-align: left;
     }
 
-    :global(tr:nth-child(even) td) {
+    :global(td:nth-child(even)) {
       background-color: $beige;
     }
 
-    :global(tr:nth-child(odd) td) {
+    :global(td:nth-child(odd)) {
       // color: $blanc;
       background-color: $gris-pale;
     }
+
+
 
     &#volatility {
       .text__body {
@@ -260,6 +262,11 @@
           @media (max-width: $tablet_portrait) {
             font-size: calc($s0 - 2px);
           }
+        }
+
+        :global(tr:last-child td) {
+          background-color: $noir;
+          color: $blanc;
         }
       }
     }
