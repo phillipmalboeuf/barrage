@@ -59,9 +59,10 @@
     }
 
     .links_container {
-      width: calc(100% + $s1);
+      width: calc(100% + ($s1 * 2));
       overflow-x: auto;
-      margin-right: calc($s1 * -1);
+      padding: $s1;
+      margin: calc($s1 * -1);
     }
 
     .links {
@@ -69,6 +70,10 @@
       flex-wrap: nowrap;
 
       .link {
+        &:last-child {
+          padding-right: $s1;
+        }
+
         a {
           position: relative;
           border: 1px solid;

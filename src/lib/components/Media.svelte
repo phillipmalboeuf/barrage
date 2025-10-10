@@ -36,8 +36,8 @@
 </script>
 
 <picture>
-  <source srcSet="{cdn(mobileMedia ? mobileMedia.fields.file.url : media.fields.file.url)}?w={Math.round(width * 0.333)}{ar ? `&fit=fill&h=${Math.round(width * 0.333 * ar)}` : ''}" media="(max-width: 600px)" />
-  <source srcSet="{cdn(media.fields.file.url)}?w={Math.round(width * 0.666)}{ar ? `&fit=fill&h=${Math.round(width * 0.666 * ar)}` : ''}" media="(max-width: 1200px)" />
+  <source srcSet="{cdn(mobileMedia ? mobileMedia.fields.file.url : media.fields.file.url)}?w={Math.round(width * 0.333)}{ar ? `&fit=fill&h=${Math.round(width * 0.333 * ar)}` : ''}" media="(max-width: 666px)" />
+  <source srcSet="{cdn(mobileMedia ? mobileMedia.fields.file.url : media.fields.file.url)}?w={Math.round(width * 0.666)}{ar ? `&fit=fill&h=${Math.round(width * 0.666 * ar)}` : ''}" media="(max-width: 1024px)" />
   <source srcSet="{cdn(media.fields.file.url)}?w={Math.round(width * 1.333)}{ar ? `&fit=fill&h=${Math.round(width * 1.333 * ar)}` : ''}" media="(min-width: 1500px)" />
   <img src="{cdn(media.fields.file.url)}?w={width}{ar ? `&fit=fill&h=${Math.round(width * ar)}` : ''}"
     style:--ar={ar ? `${width} / ${Math.round(width * ar)}` : `${media.fields.file.details.image.width} / ${media.fields.file.details.image.height}`}
