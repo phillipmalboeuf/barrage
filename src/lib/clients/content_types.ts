@@ -19,6 +19,7 @@ export interface TypeFormFields {
     action: EntryFieldTypes.Symbol;
     introduction?: EntryFieldTypes.RichText;
     inputs?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeInputSkeleton>>;
+    messageOverride?: EntryFieldTypes.Symbol;
     successMessage?: EntryFieldTypes.RichText;
 }
 

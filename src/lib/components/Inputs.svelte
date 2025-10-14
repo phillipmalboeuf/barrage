@@ -11,7 +11,7 @@
 <div class="inputs flex flex--column flex--gapped">
   {#each form.fields.inputs as input}
   <div class="input blanc">
-    <label for="input-{form.fields.id}-{input.fields.id}">{input.fields.label} *</label>
+    <label for="input-{form.fields.id}-{input.fields.id}">{input.fields.id === "message" ? (form.fields.messageOverride || input.fields.label) : input.fields.label} *</label>
     {#if input.fields.type === 'Email'}
     <input type="email" name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.label} />
     {:else if input.fields.type === 'Phone'}
@@ -19,7 +19,7 @@
     {:else if input.fields.type === 'Text'}
     <input type="text" name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.label} />
     {:else if input.fields.type === 'Textarea'}
-    <textarea name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.label}></textarea>
+    <textarea name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.id === "message" ? (form.fields.messageOverride || input.fields.label) : input.fields.label}></textarea>
     {/if}
   </div>
   {/each}
@@ -36,10 +36,10 @@
 
       label {
         position: absolute;
-        top: 50%;
+        top: 0;
         left: 0;
         padding: $s0;
-        transform: translateY(-50%);
+        // transform: translateY(-50%);
         pointer-events: none;
         opacity: 0;
 
@@ -48,9 +48,9 @@
           opacity: 1;
         }
 
-         &:has(+ textarea) {
-          top: calc($s0 + $s-2);
-         }
+        //  &:has(+ textarea) {
+        //   top: calc($s0 + $s-2);
+        //  }
       }
       
       input, textarea {
