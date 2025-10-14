@@ -1,6 +1,7 @@
 
 import type { TypeNavigationSkeleton, TypePageSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
+import { email } from '$lib/clients/postmark'
 import { getLocale } from '$lib/paraglide/runtime'
 
 

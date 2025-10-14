@@ -7,23 +7,34 @@
   import Rich from '$lib/components/Rich.svelte'
   import Inputs from '$lib/components/Inputs.svelte'
   import { getLocale } from '$lib/paraglide/runtime'
+  import { deserialize, enhance } from '$app/forms'
+  import { page } from '$app/state';
+  import { type ActionResult } from '@sveltejs/kit'
 
-  import type { PageData } from './$types'
-  let { data }: { data: PageData } = $props()
+  import type { PageData, PageProps } from './$types'
+  let { data }: { data: PageData} = $props()
 
   let active = $state<Entry<TypeQuestionSkeleton | TypeFormSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">>(data.question)
   let history = $state<Entry<TypeQuestionSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">[]>([])
   let selected = $state<string | null>(null)
   let error = $state<RichTextDocument | null>(null)
   let isValid = $state(false)
+  let success = $state(false)
 
-  let form = $state<HTMLFormElement>()
+  let element = $state<HTMLFormElement>()
 </script>
 
+{#if success}
 <section class="gris">
-  <form class="question flex flex--column flex--gapped" action={isTypeForm(active) ? active.fields.action : null} method={"POST"} bind:this={form} oninput={() => isValid = form.checkValidity()} onsubmit={e => {
+  {#if isTypeForm(active)}
+  <Rich body={active.fields.successMessage} />
+  {/if}
+</section>
+{:else}
+<section class="gris">
+  <form class="question flex flex--column flex--gapped" action={isTypeForm(active) ? active.fields.action : null} method={"POST"} bind:this={element} oninput={() => isValid = element.checkValidity()} onsubmit={async e => {
+    e.preventDefault()
     if (selected && isTypeQuestion(active)) {
-      e.preventDefault()
       const answer = active.fields.answers.find(answer => answer.fields.id === selected)
       if (answer.fields.error) {
         error = answer.fields.error
@@ -33,6 +44,19 @@
         isValid = false
         active = answer.fields.nextQuestion || active.fields.defaultNextQuestion
       } 
+    } else {
+      const data = new FormData(e.currentTarget, e.submitter)
+
+      const response = await fetch(e.currentTarget.action, {
+        method: 'POST',
+        body: data
+      })
+
+      const result: ActionResult = deserialize(await response.text())
+
+      if (result.type === 'success') {
+        success = true
+      }
     }
   }}>
     {#if isTypeQuestion(active)}
@@ -77,6 +101,7 @@
     </div>
   </form>
 </section>
+{/if}
 
 
 <style lang="scss">
