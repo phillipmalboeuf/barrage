@@ -239,12 +239,13 @@
 
           
           span {
-            @media (min-width: $tablet_portrait) {
-              margin-left: calc($s0 * -6);
-            }
             transition: transform 333ms, opacity 333ms;
             opacity: 0;
             // transform: translateY(100%);
+
+            @media (min-width: $tablet_portrait) {
+              margin-left: calc($s0 * -6);
+            }
           }
 
           &.scrolled {

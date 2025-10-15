@@ -189,7 +189,7 @@
         border-spacing: $s-2;
         margin: 0 calc($s-2 * -1) calc($s-2 * -1);
         display: block;
-        // max-width: 100%;
+        max-width: 100%;
         overflow-x: auto;
       }
     }
