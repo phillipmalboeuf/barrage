@@ -8,14 +8,14 @@
 </script>
 
 
-<div class="inputs flex flex--column flex--gapped">
+<div class="inputs flex flex--gapped">
   {#each form.fields.inputs as input}
-  <div class="input blanc">
-    <label for="input-{form.fields.id}-{input.fields.id}">{input.fields.id === "message" ? (form.fields.messageOverride || input.fields.label) : input.fields.label} *</label>
+  <div class="input blanc col" class:col--6of12={input.fields.id === 'first-name' || input.fields.id === 'last-name'} class:col--12of12={!(input.fields.id === 'first-name' || input.fields.id === 'last-name')}>
+    <label for="input-{form.fields.id}-{input.fields.id}">{input.fields.id === "message" ? (form.fields.messageOverride || input.fields.label) : input.fields.label} {#if input.fields.type !== 'Phone'}*{/if}</label>
     {#if input.fields.type === 'Email'}
     <input type="email" name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.label} />
     {:else if input.fields.type === 'Phone'}
-    <input type="tel" name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.label} />
+    <input type="tel" name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" placeholder={input.fields.label} />
     {:else if input.fields.type === 'Text'}
     <input type="text" name="{input.fields.id}" id="input-{form.fields.id}-{input.fields.id}" required placeholder={input.fields.label} />
     {:else if input.fields.type === 'Textarea'}
@@ -31,7 +31,7 @@
 
     .input {
       position: relative;
-      width: 100%;
+      // width: 100%;
       border-radius: $radius;
 
       label {
