@@ -29,6 +29,7 @@
 		"embla-carousel-autoplay": "^8.6.0",
 		"embla-carousel-svelte": "^8.6.0",
 		"luxon": "^3.6.1",
-		"postmark": "^4.0.5"
+		"postmark": "^4.0.5",
+		"supports-color": "^10.2.2"
 	}
 }
