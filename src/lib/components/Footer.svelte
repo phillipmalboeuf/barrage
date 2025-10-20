@@ -6,6 +6,7 @@
   import Rich from './Rich.svelte'
   import Inputs from './Inputs.svelte'
   import Icon from './Icon.svelte'
+  import NewsletterPage from '../../routes/newsletter/+page.svelte'
   
   import { openContactDialog } from '$lib/stores/contact.svelte'
   import ContactDialog from './ContactDialog.svelte';
@@ -62,16 +63,8 @@
   <div class="col col--4of12 col--landscape--5of12 col--tablet--12of12">
     <div class="flex flex--column flex--gapped forms">
       {#if form}
-      <div class="flex flex--column flex--gapped form padded">
-        <Rich body={form.fields.introduction} />
-        <form action={form.fields.action} method="post" class="flex flex--column flex--gapped">
-          <Inputs {form} />
-          <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
-            <input type="checkbox" name="accept" id="input-newsletter-accept" required />
-            <span>{#if getLocale() === 'fr'}J'accepte la <a href={localizeHref("/privacy")}><u>Politique de confidentialité des données numériques</u></a> de Barrage Capital. {:else}I agree to Barrage Capital's <a href={localizeHref("/privacy")}><u>Digital Data Privacy Policy.</u></a>{/if}</span>
-          </label>
-          <button type="submit">{#if getLocale() === 'fr'}Envoyer{:else}Send{/if} <span>→</span></button>
-        </form>
+      <div class="form">
+        <NewsletterPage data={{ form } as any} />
       </div>
       {/if}
       <div class="flex flex--column flex--gapped contact padded">
@@ -225,27 +218,6 @@
       background-color: $gris-pale;
       border-radius: $radius;
       flex: 1;
-
-      form {
-        margin-top: auto;
-        
-        label {
-          flex-wrap: nowrap;
-
-          span {
-            font-size: $s-1;
-          }
-        }
-        
-        button {
-          margin-top: $s1;
-          align-self: flex-end;
-
-          @media (max-width: $tablet_landscape) {
-            margin-top: $s-1;
-          }
-        }
-      }
     }
 
     .contact {
