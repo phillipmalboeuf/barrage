@@ -43,6 +43,14 @@
 
     if (result.type === 'success') {
       success = true
+
+      // Send GTM event
+      if (typeof window !== 'undefined' && window.dataLayer) {
+        window.dataLayer.push({
+          event: 'form_submission',
+          eventLabel: 'success'
+        })
+      }
     }
   }}>
 
