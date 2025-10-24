@@ -28,7 +28,7 @@
 <section>
   <!-- <Rich body={data.form.fields.introduction} /> -->
 
-  <form class="question flex flex--column flex--gapped" action={data.form.fields.action} method={"POST"} bind:this={form} oninput={() => isValid = form.checkValidity()} onsubmit={async e => {
+  <form class="question flex flex--column flex--gapped" action={getLocale() == 'fr' ? `/fr/${data.form.fields.action}` : data.form.fields.action} method={"POST"} bind:this={form} oninput={() => isValid = form.checkValidity()} onsubmit={async e => {
     e.preventDefault()
     isValid = false
    
