@@ -28,8 +28,6 @@ export const actions = {
     // These can be found in your Mailchimp signup form HTML
     const u = 'c8017893c2e7addc08670d498' // Replace with actual user ID
     const id = getLocale() === 'fr' ? 'b6f6ca8b74' : 'f4989313b8' // Replace with actual list ID
-
-    console.log(getLocale())
     
     // Prepare form data for Mailchimp
     const mailchimpData = new URLSearchParams({
@@ -42,33 +40,33 @@ export const actions = {
       [`group[17545][${getLocale() === 'fr' ? '2' : '1'}]`]: '1',
     })
 
-    // try {
-    //   const response = await fetch(mailchimpUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded',
-    //     },
-    //     body: mailchimpData
-    //   })
+    try {
+      const response = await fetch(mailchimpUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: mailchimpData
+      })
 
-    //   if (response.ok) {
-    //     return {
-    //       success: true,
-    //       message: 'Successfully subscribed to newsletter!'
-    //     }
-    //   } else {
-    //     console.error('Mailchimp subscription failed:', response.status, response.statusText)
-    //     return {
-    //       success: false,
-    //       message: 'Failed to subscribe to newsletter. Please try again.'
-    //     }
-    //   }
-    // } catch (error) {
-    //   console.error('Error subscribing to Mailchimp:', error)
-    //   return {
-    //     success: false,
-    //     message: 'An error occurred while subscribing. Please try again.'
-    //   }
-    // }
+      if (response.ok) {
+        return {
+          success: true,
+          message: 'Successfully subscribed to newsletter!'
+        }
+      } else {
+        console.error('Mailchimp subscription failed:', response.status, response.statusText)
+        return {
+          success: false,
+          message: 'Failed to subscribe to newsletter. Please try again.'
+        }
+      }
+    } catch (error) {
+      console.error('Error subscribing to Mailchimp:', error)
+      return {
+        success: false,
+        message: 'An error occurred while subscribing. Please try again.'
+      }
+    }
 	},
 }
