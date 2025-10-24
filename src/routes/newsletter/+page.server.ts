@@ -19,7 +19,7 @@ export const actions = {
 	register: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    console.log(data)
+    // console.log(data)
 
     // Mailchimp subscription endpoint
     const mailchimpUrl = 'https://barragecapital.us6.list-manage.com/subscribe/post'

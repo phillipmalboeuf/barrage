@@ -61,7 +61,7 @@
 
     <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
       <input type="checkbox" name="accept" id="input-newsletter-accept" required />
-      <span>{#if getLocale() === 'fr'}J'accepte la <a href="/fr/docs/Politique sur la gestion des renseignements personnels" target="_blank"><u>Politique de confidentialité des données numériques</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/docs/Privacy Policy" target="_blank"><u>Digital Data Privacy Policy.</u></a>{/if}</span>
+      <span>{#if getLocale() === 'fr'}J'accepte la <a href="/fr/docs/Confidentialité des données numériques" target="_blank"><u>Politique de confidentialité des données numériques</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/docs/Digital Data Privacy Policy" target="_blank"><u>Digital Data Privacy Policy.</u></a>{/if}</span>
     </label>
 
     {#if error}

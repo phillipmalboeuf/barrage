@@ -5,14 +5,14 @@ import { error, redirect } from '@sveltejs/kit'
 export const GET = async ({ params }) => {
   const { id } = params
 
-  console.log(id.replace(/-/g, ' '))
+  // console.log(id.replace(/-/g, ' '))
 
   const doc = await content.getAssets({
     'fields.title[match]': id.replace(/-/g, ' '),
     locale: { 'fr': 'fr-CA' }[getLocale()] || 'en-CA'
   })
 
-  console.log(doc)
+  // console.log(doc)
 
   if (doc.items.length === 0) {
     throw error(404, 'Document non trouvé')
