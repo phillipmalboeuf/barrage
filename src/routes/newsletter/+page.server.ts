@@ -27,7 +27,7 @@ export const actions = {
     // You'll need to replace these with your actual Mailchimp u and id values
     // These can be found in your Mailchimp signup form HTML
     const u = 'c8017893c2e7addc08670d498' // Replace with actual user ID
-    const id = 'b6f6ca8b74' // Replace with actual list ID
+    const id = getLocale() === 'fr' ? 'b6f6ca8b74' : 'f4989313b8' // Replace with actual list ID
     
     // Prepare form data for Mailchimp
     const mailchimpData = new URLSearchParams({
