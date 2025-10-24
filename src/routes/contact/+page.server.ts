@@ -19,7 +19,7 @@ export const load = async ({ request }) => {
 
 async function sendEmail(id: string, data: { message: string, name: string, email: string, phone: string }) {
   return await email.sendEmailWithTemplate({
-      From: 'phil@phils.computer',
+      From: 'info@barragecapital.com',
       To: 'info@barragecapital.com',
       // To: 'phil@phils.computer',
       MessageStream: 'broadcast',
