@@ -6,7 +6,7 @@
 
   import Rich from '$lib/components/Rich.svelte'
   import Inputs from '$lib/components/Inputs.svelte'
-  import { getLocale } from '$lib/paraglide/runtime'
+  import { getLocale, localizeHref } from '$lib/paraglide/runtime'
   import { deserialize, enhance } from '$app/forms'
   import { page } from '$app/state';
   import { type ActionResult } from '@sveltejs/kit'
@@ -45,9 +45,10 @@
         active = answer.fields.nextQuestion || active.fields.defaultNextQuestion
       } 
     } else {
+      const action = localizeHref(e.currentTarget.action)
       const data = new FormData(e.currentTarget, e.submitter)
 
-      const response = await fetch(e.currentTarget.action, {
+      const response = await fetch(action, {
         method: 'POST',
         body: data
       })

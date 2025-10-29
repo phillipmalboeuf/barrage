@@ -20,14 +20,23 @@ export const load = async ({ request }) => {
 async function sendEmail(id: string, data: { message: string, name: string, email: string, phone: string }) {
   return await email.sendEmailWithTemplate({
       From: 'info@barragecapital.com',
-      To: 'info@barragecapital.com',
+      To: id === 'already' ? 'client@barragecapital.com' : 'info@barragecapital.com',
       // To: 'phil@phils.computer',
       MessageStream: 'broadcast',
       ReplyTo: data.email as string,
       TemplateAlias: 'base',
       TemplateModel: {
-        subject: `[barragecapital.com] ${id}`,
-        body: `${data.message}<br><br>${data.name} – ${data.email} – ${data.phone}`,
+        subject: `${getLocale() === 'fr' ?
+         {
+          'new': 'Nouveau client',
+          'already': 'Déjà client',
+          'other': 'Autre'
+         }[id] : {
+          'new': 'New client',
+          'already': 'Already a client',
+          'other': 'Other'
+         }[id]}`,
+        body: `${data.message}<br><br>${data.name} – ${data.email} – ${data.phone || ''}`,
         product_url: "https://barragecapital.com",
         product_name: "https://barragecapital.com",
         company_name: "Barrage Capital",
@@ -40,16 +49,16 @@ export const actions = {
 	new: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    return await sendEmail("New client", data as { message: string, name: string, email: string, phone: string })
+    return await sendEmail("new", data as { message: string, name: string, email: string, phone: string })
 	},
   already: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    return await sendEmail("Already a client", data as { message: string, name: string, email: string, phone: string })
+    return await sendEmail("already", data as { message: string, name: string, email: string, phone: string })
 	},
   other: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    return await sendEmail("Other", data as { message: string, name: string, email: string, phone: string })
+    return await sendEmail("other", data as { message: string, name: string, email: string, phone: string })
 	}
 }
