@@ -31,7 +31,7 @@
   const normalizedFP = $derived(focalPoint ? getNormalizedFocalPoint(focalPoint, media.fields.file.details.image.width, media.fields.file.details.image.height) : undefined)
 
   function cdn(url: string) {
-    return url
+    return url.replace('//downloads.ctfassets.net', '//images.ctfassets.net').replace('//images.ctfassets.net', '//philsassets.b-cdn.net')
   }
 </script>
 
