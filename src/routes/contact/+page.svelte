@@ -62,7 +62,8 @@
         if (typeof window !== 'undefined' && window.dataLayer) {
           window.dataLayer.push({
             event: 'form_submission',
-            eventLabel: 'success'
+            eventLabel: 'success',
+            eventCategory: active.fields.id
           })
         }
       }
