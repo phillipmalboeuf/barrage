@@ -60,6 +60,10 @@
     </div>
     <Inputs form={data.form} />
 
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="business_id" tabindex="-1" value="" autocomplete="off">
+    </div>
+
     <label for="input-newsletter-accept" class="flex flex--middle flex--gapped">
       <input type="checkbox" name="accept" id="input-newsletter-accept" required />
       <span>{#if getLocale() === 'fr'}J'accepte la <a href="/docs/Confidentialité des données numériques" target="_blank"><u>Politique de confidentialité des données numériques</u></a> de Barrage Capital. {:else}I agree to Barrage Capital’s <a href="/en/docs/Digital Data Privacy Policy" target="_blank"><u>Digital Data Privacy Policy.</u></a>{/if}</span>

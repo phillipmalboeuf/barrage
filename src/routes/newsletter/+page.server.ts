@@ -19,7 +19,12 @@ export const actions = {
 	register: async (event) => {
     const data = Object.fromEntries(await event.request.formData())
 
-    // console.log(data)
+    if (data.business_id) {
+      return {
+        success: true,
+        message: 'Spam detected'
+      }
+    }
 
     // Mailchimp subscription endpoint
     const mailchimpUrl = 'https://barragecapital.us6.list-manage.com/subscribe/post'
