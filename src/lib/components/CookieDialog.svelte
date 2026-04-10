@@ -70,11 +70,18 @@
 
   aside {
     position: fixed;
-    bottom: $s1;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 105;
     width: 100%;
+    padding: $s0;
+    max-height: 100svh;
+    overflow-y: auto;
+
+    @media (min-width: $tablet_portrait) {
+      padding-bottom: 0;
+    }
   }
 
   dialog {
@@ -82,13 +89,15 @@
     width: fit-content;
     max-width: 660px;
     height: auto;
-    // max-height: calc(100svh - ($s1 * 2) - 120px);
-    overflow-y: auto;
     border-radius: $radius;
     display: block !important;
+    overflow-y: auto;
     background-color: $brun;
+    font-size: $s-1;
 
-    @media (max-width: $tablet_portrait) {
+    @media (min-width: $tablet_portrait) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
     > div {
@@ -101,20 +110,5 @@
     button {
       padding: $s-2;
     }
-
-    // h5 {
-    //   position: sticky;
-    //   z-index: 2;
-    //   top: -1px;
-    //   left: 0;
-    //   width: 100%;
-    //   padding: $s0;
-    //   border-top-left-radius: $radius;
-    //   border-top-right-radius: $radius;
-
-    //   @media (max-width: $tablet_portrait) {
-    //     border-radius: 0;
-    //   }
-    // }
   }
 </style>
