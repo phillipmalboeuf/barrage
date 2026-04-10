@@ -12,6 +12,32 @@
 		<link rel="preload" href="%sveltekit.assets%/Robinson.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="%sveltekit.assets%/Robinson-Italic.woff2" as="font" type="font/woff2" crossorigin>
 
+		<!-- Consent Mode defaults before GTM (key: barrage_cookie_consent in cookies.svelte.ts) -->
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('consent', 'default', {
+				'functionality_storage': 'granted',
+				'security_storage': 'granted',
+				'ad_storage': 'denied',
+				'analytics_storage': 'denied',
+				'ad_user_data': 'denied',
+				'ad_personalization': 'denied',
+				'personalization_storage': 'denied',
+				'wait_for_update': 500
+			});
+			try {
+				if (localStorage.getItem('barrage_cookie_consent') === 'allowed') {
+					gtag('consent', 'update', {
+						'ad_storage': 'granted',
+						'analytics_storage': 'granted',
+						'ad_user_data': 'granted',
+						'ad_personalization': 'granted',
+						'personalization_storage': 'granted'
+					});
+				}
+			} catch (e) {}
+		</script>
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

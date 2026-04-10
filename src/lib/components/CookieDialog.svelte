@@ -1,14 +1,26 @@
 <script lang="ts">
+  import { browser } from '$app/environment'
   import { preloadData } from '$app/navigation'
   import { fly } from 'svelte/transition'
+  import { onMount } from 'svelte'
 
   import CookiesPage from '../../routes/cookies/+page.svelte'
   import AvertissementPage from '../../routes/avertissement/+page.svelte'
   import Icon from './Icon.svelte'
 
-  import { cookiesState, openCookiesDialog, closeCookiesDialog, avertissementState, openAvertissementDialog, closeAvertissementDialog } from '$lib/stores/cookies.svelte'
-  import { getLocale, localizeHref } from '$lib/paraglide/runtime';
+  import { cookiesState, closeCookiesDialog, initCookieConsent, avertissementState, closeAvertissementDialog, syncAvertissementVisibility } from '$lib/stores/cookies.svelte'
+  import { localizeHref } from '$lib/paraglide/runtime';
   import { page } from '$app/state';
+
+  onMount(() => {
+    initCookieConsent()
+  })
+
+  $effect(() => {
+    page.url.search
+    if (!browser) return
+    syncAvertissementVisibility(page.url.search.length > 0)
+  })
 </script>
 
 <aside class="flex flex--gapped flex--bottom flex--center">
@@ -18,7 +30,7 @@
 
 {#if avertissementState.visible}
 <dialog class="flex flex--column" open onclose={closeAvertissementDialog} transition:fly={{ y: '110%', opacity: 1, duration: 666 }} id="avertissement-dialog">
-  <div class="flex flex--middle flex--gapped flex--end"><button class="button--none" aria-controls="avertissement-dialog" aria-expanded={avertissementState.visible ? 'true' : 'false'} onclick={() => avertissementState.visible = !avertissementState.visible}><Icon icon="close" label="Close" /></button></div>
+  <div class="flex flex--middle flex--gapped flex--end"><button type="button" class="button--none" aria-controls="avertissement-dialog" aria-expanded={avertissementState.visible ? 'true' : 'false'} onclick={closeAvertissementDialog}><Icon icon="close" label="Close" /></button></div>
   {#if data.type === 'loaded'}
   <AvertissementPage data={data.data as any} />
   {/if}

@@ -1,13 +1,10 @@
 <script lang="ts">
-  import type { Entry } from 'contentful'
-  import type { Document as RichTextDocument } from '@contentful/rich-text-types'
-  
-  import { isTypeForm, isTypeQuestion, type TypeFormSkeleton, type TypeQuestionSkeleton, type TypeTextSkeleton } from '$lib/clients/content_types'
-
   import Rich from '$lib/components/Rich.svelte'
-  import { getLocale, localizeHref } from '$lib/paraglide/runtime'
+  import { getLocale } from '$lib/paraglide/runtime'
 
-  import type { PageData, PageProps } from './$types'
+  import type { PageData } from './$types'
+  import { allowCookies, refuseCookies } from '$lib/stores/cookies.svelte'
+
   let { data }: { data: PageData} = $props()
 </script>
 
@@ -21,8 +18,8 @@
   {/if}
 
   <div class="buttons flex flex--gapped">
-    <button class="">{getLocale() === 'fr' ? 'Autoriser les témoins' : 'Allow cookies'}</button>
-    <button class="button--outline">{getLocale() === 'fr' ? 'Refuser les témoins' : 'Refuse cookies'}</button>
+    <button type="button" class="" onclick={allowCookies}>{getLocale() === 'fr' ? 'Autoriser les témoins' : 'Allow cookies'}</button>
+    <button type="button" class="button--outline" onclick={refuseCookies}>{getLocale() === 'fr' ? 'Refuser les témoins' : 'Refuse cookies'}</button>
   </div>
 </section>
 
