@@ -80,6 +80,7 @@ export interface TypeLinkFields {
     asset?: EntryFieldTypes.AssetLink;
     title?: EntryFieldTypes.Symbol;
     external?: EntryFieldTypes.Boolean;
+    emphasis?: EntryFieldTypes.Boolean;
 }
 
 export type TypeLinkSkeleton = EntrySkeletonType<TypeLinkFields, "link">;

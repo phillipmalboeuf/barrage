@@ -60,7 +60,7 @@
   </nav>
   <nav class="main-nav padded flex flex--gapped flex--middle" class:dark={headerState.dark}>
     {#each navigations.main.fields.links as link}
-      <a href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined}>{link.fields.label}</a>
+      <a href={link.fields.external ? link.fields.destination : localizeHref(link.fields.destination)} target={link.fields.external ? '_blank' : undefined} class:button={link.fields.emphasis}>{link.fields.label}</a>
     {/each}
   </nav>
   <nav class="menu-nav padded" class:open={menuOpen} class:dark={headerState.dark}>
@@ -152,6 +152,16 @@
 
         @media (max-width: $tablet_portrait) {
           display: none;
+        }
+
+        &:has(.button) {
+          margin-top: calc(($s-3 / 2) * -1);
+        }
+
+        .button {
+          background-color: transparent;
+          border: 1px solid;
+          padding: calc($s-3 / 2) $s0;
         }
       }
 
