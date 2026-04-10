@@ -4,6 +4,7 @@
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import ContactDialog from '$lib/components/ContactDialog.svelte'
+	import CookieDialog from '$lib/components/CookieDialog.svelte'
 
 	import { page } from '$app/state'
   import { getLocale } from '$lib/paraglide/runtime';
@@ -20,6 +21,7 @@
 		<!-- <Articles articles={data.articles.items} full={page.url.pathname === '/actualites'} /> -->
 	</main>
 	<ContactDialog />
+	<CookieDialog />
 	<Footer navigations={data.navigations} top form={data.newsletterForm} />
 </div>
 

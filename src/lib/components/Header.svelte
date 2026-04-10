@@ -161,7 +161,6 @@
         .button {
           background-color: transparent;
           border: 1px solid;
-          padding: calc($s-3 / 2) $s0;
         }
       }
 

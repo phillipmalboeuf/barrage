@@ -375,6 +375,12 @@ button,
 		border-bottom: 1px solid;
 	}
 
+	&.button--outline {
+		color: currentColor;
+		background: transparent;
+		box-shadow: inset 0 0 0 2px;
+	}
+
 	&:hover,
 	&:focus {
 		text-decoration: none;
