@@ -82,12 +82,17 @@
     @media (min-width: $tablet_portrait) {
       padding-bottom: 0;
     }
+
+    @media (max-width: $tablet_portrait) {
+      height: 100svh;
+      align-content: center;
+    }
   }
 
   dialog {
     position: relative;
     width: fit-content;
-    max-width: 660px;
+    max-width: 720px;
     height: auto;
     border-radius: $radius;
     display: block !important;
@@ -98,6 +103,16 @@
     @media (min-width: $tablet_portrait) {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+    }
+
+    @media (max-width: $tablet_portrait) {
+      :global(p) {
+        font-size: $s-2;
+      }
+
+      :global(button) {
+        font-size: $s-1;
+      }
     }
 
     > div {
