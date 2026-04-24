@@ -75,7 +75,6 @@
     right: 0;
     z-index: 105;
     width: 100%;
-    padding: $s0;
     max-height: 100svh;
     overflow-y: auto;
 
@@ -84,6 +83,7 @@
     }
 
     @media (max-width: $tablet_portrait) {
+      padding: $s0;
       height: 100svh;
       align-content: center;
     }
@@ -92,15 +92,15 @@
   dialog {
     position: relative;
     width: fit-content;
-    max-width: 720px;
+    max-width: 730px;
     height: auto;
     border-radius: $radius;
     display: block !important;
     overflow-y: auto;
     background-color: $brun;
-    font-size: $s-1;
+    font-size: calc($s-1 - 1px);
 
-    @media (min-width: $tablet_portrait) {
+    @media (min-width: $tablet_landscape) {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
