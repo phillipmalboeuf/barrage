@@ -90,6 +90,13 @@
   // })
 </script>
 
+<svelte:head>
+  <title>{data.page.fields.title} | Barrage Capital</title>
+  {#if data.page.fields.description}
+  <meta name="description" content={data.page.fields.description} />
+  {/if}
+</svelte:head>
+
 {#if data.page.fields.content?.length}
 {#each data.page.fields.content as item, i (item.sys.id)}
 <section class="{item.sys.contentType.sys.id}" bind:this={elements[i]}>

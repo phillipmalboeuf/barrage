@@ -14,7 +14,7 @@
 
 <section class="brun flex flex--gapped flex--column">
   {#if data.text.fields.title}
-  <h4>{data.text.fields.title}</h4>
+  <h4>{@html data.text.fields.title}</h4>
   {/if}
   {#if data.text.fields.body}
   <Rich body={data.text.fields.body} />

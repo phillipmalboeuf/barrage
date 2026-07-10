@@ -10,7 +10,7 @@
 
 <div class="documents flex flex--gapped flex--column {['beige', 'bleu', 'vert'][index % 3]}">
   {#if item.fields.title}
-  <h6><em>{item.fields.title}</em></h6>
+  <h6><em>{@html item.fields.title}</em></h6>
   {/if}
   <div class="links_container">
   {#if item.fields.links}

@@ -45,9 +45,9 @@
 <div class="text flex flex--gapped {item.fields.mediaAlignment}" class:media={item.fields.media} id={item.fields.id}>
   {#if item.fields.title}
   {#if small}
-  <h6 class="col col--12of12"><hr bind:this={hrElement}>{item.fields.title}</h6>
+  <h6 class="col col--12of12"><hr bind:this={hrElement}>{@html item.fields.title}</h6>
   {:else}
-  <h3 class="col col--12of12"><hr bind:this={hrElement}><em>{item.fields.title}</em></h3>
+  <h3 class="col col--12of12"><hr bind:this={hrElement}><em>{@html item.fields.title}</em></h3>
   {/if}
   {/if}
   {#if item.fields.body}

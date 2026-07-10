@@ -16,7 +16,7 @@
 
 <div class="grid flex flex--column">
   {#if grid.fields.title}
-  <h3><em>{grid.fields.title}</em></h3>
+  <h3><em>{@html grid.fields.title}</em></h3>
   {/if}
 
   {#if grid.fields.items}
