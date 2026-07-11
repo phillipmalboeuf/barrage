@@ -77,17 +77,16 @@
     width: 100%;
     max-height: 100svh;
     overflow-y: auto;
+    pointer-events: none;
 
     @media (min-width: $tablet_portrait) {
       padding-bottom: 0;
     }
 
-    &:not(:empty) {
-      @media (max-width: $tablet_portrait) {
-        padding: $s0;
-        height: 100svh;
-        align-content: center;
-      }
+    @media (max-width: $tablet_portrait) {
+      padding: $s0;
+      height: 100svh;
+      align-content: center;
     }
   }
 
@@ -101,6 +100,7 @@
     overflow-y: auto;
     background-color: $brun;
     font-size: calc($s-1 - 1px);
+    pointer-events: auto;
 
     @media (min-width: $tablet_landscape) {
       border-bottom-left-radius: 0;
