@@ -82,10 +82,12 @@
       padding-bottom: 0;
     }
 
-    @media (max-width: $tablet_portrait) {
-      padding: $s0;
-      height: 100svh;
-      align-content: center;
+    &:not(:empty) {
+      @media (max-width: $tablet_portrait) {
+        padding: $s0;
+        height: 100svh;
+        align-content: center;
+      }
     }
   }
 
